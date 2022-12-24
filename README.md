@@ -1,41 +1,77 @@
 # compass
 The same, only different
 
-# Principles
-- DTO driven
-- No generated code
+# principles
+- dto driven
+- no generated code
 - clean
-- No boilerplate
+- no boilerplate
 
-# Todo
-## Server
-- [ ] Websocket
-- [ ] Server Side Rendering (Html)
-- [ ] API (Json)
-- [ ] SQL integration
-- [ ] TOML config
-- [ ] Session handling
-- [ ] Transactions
-- [ ] Proper error handling
-- [ ] scheduler
-- [ ] event based
-- [ ] routing
-- [ ] validation
-- [ ] idempotency
-- [ ] failover
-- [ ] mail
-- [ ] enum support
+# features
+## general
+- searchable
+- enums
+- dtos
 
-## Client
-- [ ] UI System (like Carbon, Material, etc.)
-- [ ] Color scheme
+## api
+- routing
+- idempotency
+- rest
+- websocket
 
-## Other
-- [ ] JavaScript framework
-- [ ] JavaScript compilation
-- [ ] CSS creation
-- [ ] CSS compilation
-- [ ] HTML Builder
-- [ ] HTML Compilation
+## rendering
+- html
+  - objects
+  - string
+- css
+  - objects
+  - string
 
+## error-handling
+- runtime exceptions
+- rules
+- fallback
+- retry
 
+## sql
+- string queries
+- transactions
+
+## config
+- toml
+
+## security
+- authentication
+- authorization
+- session
+- validation
+
+## client
+- rest
+- websocket
+- capsuled logic
+- global information
+- caching
+
+## design
+- normalize
+- tiles
+- colors
+- typography
+- grid
+- sizes
+- dark mode
+
+## other
+- scheduler
+- mail
+- event hooks
+
+# Implementation
+- document editor
+- work-time calculator
+- habit tracker
+- todo tracker (long-term, short-term, organiser "a la" kanban)
+
+# roadmap
+- [ ] create roadmap (first phase) 
