@@ -1,11 +1,18 @@
 # compass
 The same, only different
 
+# structure
+north = api
+south = html
+west = sql
+east = ?
+
 # principles
 - dto driven
 - no generated code
 - clean
 - no boilerplate
+- avoid annotations when possible
 
 # features
 ## general
@@ -18,6 +25,7 @@ The same, only different
 - idempotency
 - rest
 - websocket
+- docs
 
 ## rendering
 - html
@@ -26,25 +34,34 @@ The same, only different
 - css
   - objects
   - string
+- js
+  - web components
+  - templating
+  - custom framework
+  - no npm
 
 ## error-handling
 - runtime exceptions
 - rules
 - fallback
 - retry
+- http codes
 
 ## sql
 - string queries
 - transactions
+- batch inserts
 
-## config
-- toml
+## configuration
+- json
+- dev, stage, test, prod, etc
 
 ## security
 - authentication
 - authorization
 - session
 - validation
+- roles
 
 ## client
 - rest
@@ -72,6 +89,3 @@ The same, only different
 - work-time calculator
 - habit tracker
 - todo tracker (long-term, short-term, organiser "a la" kanban)
-
-# roadmap
-- [ ] create roadmap (first phase) 

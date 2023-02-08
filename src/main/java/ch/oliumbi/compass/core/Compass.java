@@ -1,25 +1,40 @@
 package ch.oliumbi.compass.core;
 
-import ch.oliumbi.compass.core.toml.Toml;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.ServerConnector;
+import ch.oliumbi.compass.core.configuration.Configuration;
+import ch.oliumbi.compass.core.exceptions.ExceptionHandler;
+import ch.oliumbi.compass.core.exceptions.InitialisationException;
+import ch.oliumbi.compass.core.utilities.ValidationUtility;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-public class Compass {
+public abstract class Compass {
 
-    public static void start() throws Exception {
-        Toml toml = new Toml();
+  private static final Logger LOGGER = LoggerFactory.getLogger(Compass.class);
 
-        toml.parse();
+  private Configuration configuration;
+  private ExceptionHandler exceptionHandler = new ExceptionHandler();
 
-        Server server = new Server();
-        ServerConnector connector = new ServerConnector(server);
-        connector.setHost("localhost");
-        connector.setPort(8080);
+  public void start(String[] arguments) {
+    LOGGER.info("started compass");
 
-        server.addConnector(connector);
+    configure();
 
-        server.setHandler(new ServerHandler());
-
-        server.start();
+    try {
+      configuration.parseArguments(arguments);
+      configuration.loadConfigurationFiles();
+    } catch (Exception exception) {
+      exceptionHandler.handle(exception);
     }
+
+
+  }
+
+  protected abstract Configuration configuration();
+
+  protected void configure() {
+    this.configuration = ValidationUtility.notNull(
+        configuration(),
+        new InitialisationException("configuration is null")
+    );
+  }
 }
