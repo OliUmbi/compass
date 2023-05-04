@@ -17,8 +17,6 @@ public abstract class Configuration {
 
     String[] arguments = ValidationUtility.notNull(args, new ConfigurationException("arguments is null"));
 
-
-
     if (Arguments.class.getDeclaredFields().length * 2 < args.length) {
       // todo exception handling
       throw new RuntimeException("too many arguments");
@@ -34,7 +32,6 @@ public abstract class Configuration {
       }
 
       String key = flag.substring(1);
-
 
       // todo find flag name and set data object;
 
