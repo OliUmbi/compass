@@ -3,7 +3,10 @@ package ch.oliumbi.compass.core;
 import ch.oliumbi.compass.core.configuration.Configuration;
 import ch.oliumbi.compass.core.exceptions.ExceptionHandler;
 import ch.oliumbi.compass.core.exceptions.InitialisationException;
+import ch.oliumbi.compass.core.north.North;
 import ch.oliumbi.compass.core.utilities.ValidationUtility;
+import java.util.ServiceLoader;
+import org.reflections.Reflections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,6 +19,9 @@ public abstract class Compass {
 
   public void start(String[] arguments) {
     LOGGER.info("started compass");
+
+    Reflections reflections = new Reflections(North.class);
+    System.out.println(reflections.getConfiguration());
 
     configure();
 

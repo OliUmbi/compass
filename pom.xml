@@ -8,9 +8,10 @@
     <description>The same, only different</description>
     <groupId>ch.oliumbi</groupId>
     <artifactId>compass</artifactId>
-    <version>1.0.0</version>
+    <version>development</version>
 
     <properties>
+        <java.version>19</java.version>
         <maven.compiler.target>19</maven.compiler.target>
         <maven.compiler.source>19</maven.compiler.source>
     </properties>
@@ -28,18 +29,18 @@
             <version>9.4.50.v20221201</version>
         </dependency>
 
+        <!-- reflections -->
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.11</version>
+        </dependency>
+
         <!-- json -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.14.2</version>
-        </dependency>
-
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.26</version>
         </dependency>
 
         <!-- logging -->
