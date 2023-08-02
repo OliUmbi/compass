@@ -2,9 +2,12 @@
 The same, only different
 
 # structure
-north = api
-south = html
+north = html
+
+south = api
+
 west = sql
+
 east = ?
 
 # principles
