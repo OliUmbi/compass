@@ -2,6 +2,7 @@ package ch.oliumbi.compass.web;
 
 import ch.oliumbi.compass.route.Route;
 import java.util.List;
+import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 
@@ -20,6 +21,10 @@ public class Web {
     // todo move to config
     serverConnector.setHost("localhost");
     serverConnector.setPort(8080);
+    serverConnector.getConnectionFactories().stream()
+        .filter(connectionFactory -> connectionFactory instanceof HttpConnectionFactory)
+        .forEach(connectionFactory -> ((HttpConnectionFactory) connectionFactory).getHttpConfiguration()
+            .setSendServerVersion(false));
     server.addConnector(serverConnector);
 
     WebHandler webHandler = new WebHandler(routes);

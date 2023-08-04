@@ -20,11 +20,9 @@ public class WebHandler extends AbstractHandler {
 
     baseRequest.setHandled(true);
 
-    System.out.println(target);
-
     Route route = routes.get(0);
 
-    response.setContentType(route.contentType());
+    response.setContentType(route.contentType().translate());
 
     try {
       Object body = route.handle(request, response);
