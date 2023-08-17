@@ -1,11 +1,12 @@
 package ch.oliumbi.compass.enums;
 
-public enum ContentType {
+public enum MimeType {
   HTML,
   CSS,
   JAVASCRIPT,
   JSON,
   XML,
+  MULTI_PART,
   PDF,
   PNG,
   JPEG,
@@ -28,6 +29,9 @@ public enum ContentType {
       }
       case JSON -> {
         return "application/json";
+      }
+      case MULTI_PART -> {
+        return "multipart/form-data";
       }
       case XML -> {
         return "application/xml";
@@ -59,9 +63,8 @@ public enum ContentType {
       default -> {
         // todo error handling
         System.out.println("Unexpected value: " + this);
+        return "text/plain";
       }
     }
-
-    return "text/plain";
   }
 }
