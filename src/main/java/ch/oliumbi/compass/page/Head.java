@@ -1,5 +1,12 @@
 package ch.oliumbi.compass.page;
 
-public class Head {
+public record Head(
+    String language,
+    String charset,
+    String title,
+    String description,
+    String iconHref,
+    String themeColor
+) {
 
 }
