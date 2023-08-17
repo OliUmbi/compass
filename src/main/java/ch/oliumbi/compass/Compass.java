@@ -2,9 +2,11 @@ package ch.oliumbi.compass;
 
 
 import ch.oliumbi.compass.annotations.North;
+import ch.oliumbi.compass.page.Page;
 import ch.oliumbi.compass.route.Route;
 import ch.oliumbi.compass.web.Web;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -19,24 +21,34 @@ public abstract class Compass {
 
     Set<Class<?>> norths = reflections.getTypesAnnotatedWith(North.class);
 
+    List<Page> pages = new ArrayList<>();
     for (Class<?> north : norths) {
-      Constructor<?>[] declaredConstructors = north.getDeclaredConstructors();
+      Object instance = createInstance(north);
 
-      if (declaredConstructors.length > 1) {
-        // todo too many constructors
+      if (instance instanceof Page page) {
+        pages.add(page);
       }
-
-      // todo find all params
-      // todo try to instantiate, ordered by params
-      // todo return batch impls
-      Constructor<?> constructor;
-      if (declaredConstructors.length == 1) {
-        constructor = declaredConstructors[0];
-      }
-
     }
 
-    Web web = new Web(new ArrayList<>());
+    Web web = new Web(pages);
     web.start();
+  }
+
+
+  public static <T> T createInstance(Class<T> clazz) {
+    Constructor<T> constructor;
+    try {
+      constructor = clazz.getConstructor();
+    } catch (NoSuchMethodException e) {
+      System.out.println("No constructor found for class " + clazz.getName());
+      throw new RuntimeException();
+    }
+
+    try {
+      return constructor.newInstance();
+    } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+      System.out.println("Failed to instantiate / create class " + clazz.getName());
+      throw new RuntimeException();
+    }
   }
 }

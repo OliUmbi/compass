@@ -2,14 +2,20 @@ package ch.oliumbi.playground.pages;
 
 import ch.oliumbi.compass.annotations.North;
 import ch.oliumbi.compass.page.Page;
+import ch.oliumbi.playground.Playground;
 
 @North
-public class HomePage implements Page {
+public class HomePage extends Playground {
 
   @Override
-  public String render(String path) {
+  public String path() {
+    return "/";
+  }
+
+  @Override
+  public String body() {
     return """
-        
+        <p>hello yxcv</p>
         """;
   }
 }

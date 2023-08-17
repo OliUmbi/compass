@@ -19,6 +19,7 @@ east = ?
 
 # features
 ## general
+- http/3
 - searchable
 - enums
 - dtos

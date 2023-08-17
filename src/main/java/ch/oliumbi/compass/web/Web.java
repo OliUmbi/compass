@@ -1,6 +1,6 @@
 package ch.oliumbi.compass.web;
 
-import ch.oliumbi.compass.route.Route;
+import ch.oliumbi.compass.page.Page;
 import java.util.List;
 import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.Server;
@@ -8,10 +8,10 @@ import org.eclipse.jetty.server.ServerConnector;
 
 public class Web {
 
-  private final List<Route> routes;
+  private final List<Page> pages;
 
-  public Web(List<Route> routes) {
-    this.routes = routes;
+  public Web(List<Page> pages) {
+    this.pages = pages;
   }
 
   public void start() {
@@ -25,9 +25,10 @@ public class Web {
         .filter(connectionFactory -> connectionFactory instanceof HttpConnectionFactory)
         .forEach(connectionFactory -> ((HttpConnectionFactory) connectionFactory).getHttpConfiguration()
             .setSendServerVersion(false));
+
     server.addConnector(serverConnector);
 
-    WebHandler webHandler = new WebHandler(routes);
+    WebHandler webHandler = new WebHandler(pages);
     server.setHandler(webHandler);
 
     try {
