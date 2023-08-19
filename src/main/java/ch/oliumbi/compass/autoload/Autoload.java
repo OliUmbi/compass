@@ -1,4 +1,4 @@
-package ch.oliumbi.compass.annotations;
+package ch.oliumbi.compass.autoload;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface West {
+public @interface Autoload {
 
 }

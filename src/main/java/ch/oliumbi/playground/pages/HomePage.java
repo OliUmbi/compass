@@ -1,11 +1,19 @@
 package ch.oliumbi.playground.pages;
 
-import ch.oliumbi.compass.annotations.North;
-import ch.oliumbi.compass.page.Page;
+import ch.oliumbi.compass.autoload.Autoload;
+import ch.oliumbi.playground.Main;
 import ch.oliumbi.playground.Playground;
+import ch.oliumbi.playground.SomeService;
 
-@North
+@Autoload
 public class HomePage extends Playground {
+
+  private SomeService someService;
+
+  public HomePage(SomeService someService) {
+    this.someService = someService;
+    someService.test();
+  }
 
   @Override
   public String path() {
@@ -14,6 +22,8 @@ public class HomePage extends Playground {
 
   @Override
   public String body() {
+    someService.test();
+
     return """
         <p>hello yxcv</p>
         """;
