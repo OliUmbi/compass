@@ -1,10 +1,14 @@
 package ch.oliumbi.compass.manifest;
 
+import ch.oliumbi.compass.enums.Translatable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * experimental
  * https://developer.mozilla.org/en-US/docs/Web/Manifest/orientation
  */
-public enum Orientation {
+public enum Orientation implements Translatable {
   ANY,
   NATURAL,
   LANDSCAPE,
@@ -14,6 +18,9 @@ public enum Orientation {
   PORTRAIT_PRIMARY,
   PORTRAIT_SECONDARY;
 
+  public static final Logger LOGGER = LoggerFactory.getLogger(Orientation.class);
+
+  @Override
   public String translate() {
     switch (this) {
       case ANY -> {
@@ -41,8 +48,7 @@ public enum Orientation {
         return "portrait-secondary";
       }
       default -> {
-        // todo error handling
-        System.out.println("Unexpected value: " + this);
+        LOGGER.error("Unexpected value: " + this);
         return "any";
       }
     }

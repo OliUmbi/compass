@@ -1,10 +1,15 @@
 package ch.oliumbi.compass.manifest;
 
+import ch.oliumbi.compass.enums.MimeType;
+import ch.oliumbi.compass.enums.Translatable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * experimental
  * https://developer.mozilla.org/en-US/docs/Web/Manifest/categories
  */
-public enum Category {
+public enum Category implements Translatable {
   BOOKS,
   BUSINESS,
   EDUCATION,
@@ -34,6 +39,9 @@ public enum Category {
   UTILITIES,
   WEATHER;
 
+  public static final Logger LOGGER = LoggerFactory.getLogger(Category.class);
+
+  @Override
   public String translate() {
     switch (this) {
       case BOOKS -> {
@@ -121,8 +129,7 @@ public enum Category {
         return "weather";
       }
       default -> {
-        // todo error handling
-        System.out.println("Unexpected value: " + this);
+        LOGGER.error("Unexpected value: " + this);
         return "";
       }
     }

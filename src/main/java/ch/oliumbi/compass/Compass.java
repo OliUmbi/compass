@@ -1,33 +1,25 @@
 package ch.oliumbi.compass;
 
-
 import ch.oliumbi.compass.autoload.AutoloadService;
-import ch.oliumbi.compass.page.Page;
 import ch.oliumbi.compass.web.Web;
-import java.util.ArrayList;
+import ch.oliumbi.compass.web.WebHandler;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class Compass {
 
+  public static final Logger LOGGER = LoggerFactory.getLogger(Compass.class);
+
   public static void start(Class<?> clazz, String[] arguments) {
-    System.out.println("Started compass");
+    LOGGER.info("Started compass");
 
     AutoloadService autoloadService = new AutoloadService();
-
     List<Object> instances = autoloadService.autoload(clazz.getPackageName());
 
-    System.out.println(instances);
+    WebHandler webHandler = new WebHandler(instances);
 
-    List<Page> pages = new ArrayList<>();
-    for (Object instance : instances) {
-      if (instance instanceof Page page) {
-        pages.add(page);
-      }
-    }
-
-    Web web = new Web(pages);
+    Web web = new Web(webHandler);
     web.start();
   }
-
-
 }

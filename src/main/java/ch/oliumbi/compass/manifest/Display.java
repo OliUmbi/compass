@@ -1,14 +1,20 @@
 package ch.oliumbi.compass.manifest;
 
+import ch.oliumbi.compass.enums.Translatable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * https://developer.mozilla.org/en-US/docs/Web/Manifest/display
  */
-public enum Display {
+public enum Display implements Translatable {
   FULLSCREEN, // fullscreen
   STANDALONE, // no navigation
-  MINIMAL_UI, // not quite a browser but close
-  BROWSER; // standard browser
+  MINIMAL_UI; // not quite a browser but close
 
+  public static final Logger LOGGER = LoggerFactory.getLogger(Display.class);
+
+  @Override
   public String translate() {
     switch (this) {
       case FULLSCREEN -> {
@@ -20,12 +26,9 @@ public enum Display {
       case MINIMAL_UI -> {
         return "minimal-ui";
       }
-      case BROWSER -> {
-        return "browser";
-      }
       default -> {
         // todo error handling
-        System.out.println("Unexpected value: " + this);
+        LOGGER.error("Unexpected value: " + this);
         return "browser";
       }
     }

@@ -1,17 +1,8 @@
 # compass
 The same, only different
 
-# structure
-north = html
-
-south = api
-
-west = sql
-
-east = ?
-
 # principles
-- dto driven
+- record driven (immutable)
 - no generated code
 - clean
 - no boilerplate
@@ -19,9 +10,6 @@ east = ?
 
 # features
 ## general
-- searchable
-- enums
-- dtos
 
 ## api
 - routing
@@ -42,6 +30,7 @@ east = ?
   - templating
   - custom framework
   - no npm
+- web components
 
 ## error-handling
 - runtime exceptions
@@ -85,6 +74,7 @@ east = ?
 ## other
 - scheduler
 - mail
+- observer
 - event hooks
 
 # Implementation

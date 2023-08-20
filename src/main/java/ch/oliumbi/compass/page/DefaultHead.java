@@ -1,12 +1,10 @@
-package ch.oliumbi.playground;
+package ch.oliumbi.compass.page;
 
 import ch.oliumbi.compass.manifest.Display;
 import ch.oliumbi.compass.manifest.Manifest;
-import ch.oliumbi.compass.page.Head;
-import ch.oliumbi.compass.page.Page;
 import java.util.ArrayList;
 
-public class Playground implements Head {
+public class DefaultHead implements Head {
 
   @Override
   public String language() {
@@ -20,17 +18,17 @@ public class Playground implements Head {
 
   @Override
   public String title() {
-    return "Playground";
+    return "undefined";
   }
 
   @Override
   public String description() {
-    return "Compass testing grounds";
+    return "undefined";
   }
 
   @Override
   public String iconHref() {
-    return "/static/images/img.png";
+    return "undefined";
   }
 
   @Override
@@ -41,9 +39,9 @@ public class Playground implements Head {
   @Override
   public Manifest manifest() {
     return new Manifest(
-        "Playground",
-        "plygrnd",
-        "Compass testing grounds",
+        "undefined",
+        "undefined",
+        "undefined",
         "#ffffff",
         "#000000",
         Display.MINIMAL_UI,

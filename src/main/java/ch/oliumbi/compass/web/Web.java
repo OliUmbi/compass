@@ -5,40 +5,43 @@ import java.util.List;
 import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Web {
 
-  private final List<Page> pages;
+  public static final Logger LOGGER = LoggerFactory.getLogger(Web.class);
+  private final WebHandler webHandler;
 
-  public Web(List<Page> pages) {
-    this.pages = pages;
+  public Web(WebHandler webHandler) {
+    this.webHandler = webHandler;
   }
 
   public void start() {
 
     try {
       Server server = new Server();
-
-      ServerConnector serverConnector = new ServerConnector(server);
-      // todo move to config
-      serverConnector.setHost("localhost");
-      serverConnector.setPort(8080);
-      serverConnector.getConnectionFactories().stream()
-          .filter(connectionFactory -> connectionFactory instanceof HttpConnectionFactory)
-          .forEach(connectionFactory -> ((HttpConnectionFactory) connectionFactory).getHttpConfiguration()
-              .setSendServerVersion(false));
-
-      server.addConnector(serverConnector);
-
-      WebHandler webHandler = new WebHandler(pages);
+      server.addConnector(connector(server));
       server.setHandler(webHandler);
 
       server.start();
-    } catch (Exception e) {
-      e.printStackTrace();
-      // todo handle exception
-    }
 
-    System.out.println("Started web server");
+      LOGGER.info("Started web server");
+    } catch (Exception e) {
+      LOGGER.error("Failed to start web server", e);
+    }
+  }
+
+  private ServerConnector connector(Server server) {
+    ServerConnector serverConnector = new ServerConnector(server);
+    // todo move to config
+    serverConnector.setHost("localhost");
+    serverConnector.setPort(8080);
+    serverConnector.getConnectionFactories().stream()
+        .filter(connectionFactory -> connectionFactory instanceof HttpConnectionFactory)
+        .forEach(connectionFactory -> ((HttpConnectionFactory) connectionFactory).getHttpConfiguration()
+            .setSendServerVersion(false));
+
+    return serverConnector;
   }
 }

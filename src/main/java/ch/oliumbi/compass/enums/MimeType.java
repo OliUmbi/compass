@@ -1,6 +1,9 @@
 package ch.oliumbi.compass.enums;
 
-public enum MimeType {
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public enum MimeType implements Translatable {
   HTML,
   CSS,
   JAVASCRIPT,
@@ -16,6 +19,9 @@ public enum MimeType {
   TTF,
   OTF;
 
+  public static final Logger LOGGER = LoggerFactory.getLogger(MimeType.class);
+
+  @Override
   public String translate() {
     switch (this) {
       case HTML -> {
@@ -61,8 +67,7 @@ public enum MimeType {
         return "font/otf";
       }
       default -> {
-        // todo error handling
-        System.out.println("Unexpected value: " + this);
+        LOGGER.error("Unexpected value: " + this);
         return "text/plain";
       }
     }
