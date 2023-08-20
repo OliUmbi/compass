@@ -25,7 +25,7 @@ public class HomePage implements Page {
     someService.test();
 
     return """
-        <p>hello yxcv</p>
+        <p>hello world</p>
         """;
   }
 }

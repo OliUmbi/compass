@@ -1,11 +1,14 @@
 package ch.oliumbi.playground;
 
+import ch.oliumbi.compass.autoload.Autoload;
+import ch.oliumbi.compass.enums.MimeType;
 import ch.oliumbi.compass.manifest.Display;
+import ch.oliumbi.compass.manifest.Icon;
 import ch.oliumbi.compass.manifest.Manifest;
 import ch.oliumbi.compass.page.Head;
-import ch.oliumbi.compass.page.Page;
-import java.util.ArrayList;
+import java.util.List;
 
+@Autoload
 public class Playground implements Head {
 
   @Override
@@ -47,7 +50,10 @@ public class Playground implements Head {
         "#ffffff",
         "#000000",
         Display.MINIMAL_UI,
-        new ArrayList<>()
+        List.of(
+            new Icon("/static/images/logo.png", "2000x2000", MimeType.PNG),
+            new Icon("/static/images/logo-small.png", "144x144", MimeType.PNG)
+        )
     );
   }
 }
