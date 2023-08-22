@@ -35,7 +35,7 @@ public class Web {
   private ServerConnector connector(Server server) {
     ServerConnector serverConnector = new ServerConnector(server);
     // todo move to config
-    serverConnector.setHost("localhost");
+    serverConnector.setHost("0.0.0.0");
     serverConnector.setPort(8080);
     serverConnector.getConnectionFactories().stream()
         .filter(connectionFactory -> connectionFactory instanceof HttpConnectionFactory)
