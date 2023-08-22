@@ -26,11 +26,11 @@ The same, only different
   - objects
   - string
 - js
-  - web components
+  - httpServer components
   - templating
   - custom framework
   - no npm
-- web components
+- httpServer components
 
 ## error-handling
 - runtime exceptions

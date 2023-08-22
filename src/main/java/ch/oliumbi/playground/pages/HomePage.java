@@ -1,19 +1,15 @@
 package ch.oliumbi.playground.pages;
 
 import ch.oliumbi.compass.autoload.Autoload;
+import ch.oliumbi.compass.client.Client;
+import ch.oliumbi.compass.enums.Method;
 import ch.oliumbi.compass.page.Page;
-import ch.oliumbi.playground.Main;
-import ch.oliumbi.playground.Playground;
-import ch.oliumbi.playground.SomeService;
+import ch.oliumbi.playground.routes.PingRequest;
+import ch.oliumbi.playground.routes.PingResponse;
+import java.util.Optional;
 
 @Autoload
 public class HomePage implements Page {
-
-  private SomeService someService;
-
-  public HomePage(SomeService someService) {
-    this.someService = someService;
-  }
 
   @Override
   public String path() {
@@ -22,10 +18,15 @@ public class HomePage implements Page {
 
   @Override
   public String body() {
-    someService.test();
+
+    Client client = new Client();
+    Optional<PingResponse> ping = client.request("http://localhost:8080/ping", Method.POST, PingResponse.class,
+        new PingRequest("ping"));
+
+    System.out.println(ping);
 
     return """
-        <p>hello world</p>
+        <p style="font-family: 'Inter';">hello world</p>
         """;
   }
 }

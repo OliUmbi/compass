@@ -5,11 +5,11 @@ import ch.oliumbi.compass.enums.Method;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public interface Route {
+public interface Route<T> {
 
   String path();
   Method method();
-  MimeType contentType();
+  Class<T> mapping();
 
-  Object handle(HttpServletRequest request, HttpServletResponse response) throws Exception;
+  Object handle(T body) throws Exception;
 }

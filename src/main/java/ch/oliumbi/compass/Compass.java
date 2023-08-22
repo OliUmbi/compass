@@ -1,8 +1,8 @@
 package ch.oliumbi.compass;
 
 import ch.oliumbi.compass.autoload.AutoloadService;
-import ch.oliumbi.compass.web.Web;
-import ch.oliumbi.compass.web.WebHandler;
+import ch.oliumbi.compass.http.HttpServer;
+import ch.oliumbi.compass.http.HttpHandler;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +17,9 @@ public abstract class Compass {
     AutoloadService autoloadService = new AutoloadService();
     List<Object> instances = autoloadService.autoload(clazz.getPackageName());
 
-    WebHandler webHandler = new WebHandler(instances);
+    HttpHandler httpHandler = new HttpHandler(instances);
 
-    Web web = new Web(webHandler);
-    web.start();
+    HttpServer httpServer = new HttpServer(httpHandler);
+    httpServer.start();
   }
 }

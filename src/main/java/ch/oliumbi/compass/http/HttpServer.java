@@ -1,20 +1,18 @@
-package ch.oliumbi.compass.web;
+package ch.oliumbi.compass.http;
 
-import ch.oliumbi.compass.page.Page;
-import java.util.List;
 import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Web {
+public class HttpServer {
 
-  public static final Logger LOGGER = LoggerFactory.getLogger(Web.class);
-  private final WebHandler webHandler;
+  public static final Logger LOGGER = LoggerFactory.getLogger(HttpServer.class);
+  private final HttpHandler httpHandler;
 
-  public Web(WebHandler webHandler) {
-    this.webHandler = webHandler;
+  public HttpServer(HttpHandler httpHandler) {
+    this.httpHandler = httpHandler;
   }
 
   public void start() {
@@ -22,7 +20,7 @@ public class Web {
     try {
       Server server = new Server();
       server.addConnector(connector(server));
-      server.setHandler(webHandler);
+      server.setHandler(httpHandler);
 
       server.start();
 
