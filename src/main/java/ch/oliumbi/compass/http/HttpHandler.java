@@ -50,6 +50,9 @@ public class HttpHandler extends AbstractHandler {
 
     baseRequest.setHandled(true);
 
+    response.setHeader("Access-Control-Allow-Origin", "*");
+    response.setHeader("Access-Control-Allow-Credentials", "true");
+
     try {
 
       if (target.startsWith("/static")) {

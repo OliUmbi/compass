@@ -26,7 +26,7 @@ const post = () => {
 
 setInterval(() => {
 
-  fetch("http://" + ip + ":8080/message").then(data => {
+  fetch("http://" + ip + ":8080/message", {mode: "no-cors"}).then(data => {
 
     data.json().then(json => {
 
