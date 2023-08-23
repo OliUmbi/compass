@@ -1,4 +1,4 @@
-package ch.oliumbi.playground;
+package ch.oliumbi.server;
 
 import ch.oliumbi.compass.autoload.Autoload;
 import ch.oliumbi.compass.document.Document;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Autoload
-public class Playground implements Head {
+public class Server implements Head {
 
   @Override
   public String language() {
@@ -26,12 +26,12 @@ public class Playground implements Head {
 
   @Override
   public String title() {
-    return "Playground";
+    return "User";
   }
 
   @Override
   public String description() {
-    return "Compass testing grounds";
+    return "User message board";
   }
 
   @Override
@@ -59,28 +59,28 @@ public class Playground implements Head {
   @Override
   public List<Document> css() {
     return List.of(
-        new Document("/static/css/normalize.css", MimeType.CSS)
+        new Document("/static/css/normalize.css", MimeType.CSS),
+        new Document("/static/css/style.css", MimeType.CSS)
     );
   }
 
   @Override
   public List<Document> js() {
-    return new ArrayList<>();
+    return List.of(
+        new Document("/static/js/script.js", MimeType.JAVASCRIPT)
+    );
   }
 
   @Override
   public Manifest manifest() {
     return new Manifest(
-        "Playground",
-        "plygrnd",
-        "Compass testing grounds",
+        "Server",
+        "Server",
+        "Server message board",
         "#ffffff",
         "#000000",
         Display.MINIMAL_UI,
-        List.of(
-            new Icon("/static/images/logo.png", "2000x2000", MimeType.PNG),
-            new Icon("/static/images/logo-small.png", "144x144", MimeType.PNG)
-        )
+        new ArrayList<>()
     );
   }
 }

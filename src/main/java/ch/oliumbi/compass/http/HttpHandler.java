@@ -90,6 +90,7 @@ public class HttpHandler extends AbstractHandler {
                       <link rel="manifest" href="manifest.json" />
                       <link rel="stylesheet" href="fonts.css" />
                       %s
+                      %s
                     </head>
                     <body>
                     """,
@@ -102,6 +103,9 @@ public class HttpHandler extends AbstractHandler {
                 head.icon().mimeType().translate(),
                 head.css().stream()
                     .map(document -> "<link rel=\"stylesheet\" href=\"" + document.path() + "\" />")
+                    .collect(Collectors.joining()),
+                head.js().stream()
+                    .map(document -> "<script src=\"" + document.path() + "\"></script>")
                     .collect(Collectors.joining())
             );
 
@@ -122,15 +126,18 @@ public class HttpHandler extends AbstractHandler {
       for (Route route : routes) {
 
         if (route.path().equals(target)
-            && route.method().name().equals(request.getMethod())
-            && MimeType.JSON.translate().equals(request.getContentType())) {
+            && route.method().name().equals(request.getMethod())) {
+
 
           String requestBody = request.getReader().lines().collect(Collectors.joining());
 
-          Object body = objectMapper.readValue(requestBody, route.mapping());
+          Object body = null;
+          if (!requestBody.isEmpty()){
+            body = objectMapper.readValue(requestBody, route.mapping());
+          }
 
           response.setContentType(MimeType.JSON.translate());
-          response.getOutputStream().print(objectMapper.writeValueAsString(route.handle(body)));
+          response.getOutputStream().print(objectMapper.writeValueAsString(route.handle(body, request.getRemoteAddr())));
         }
       }
 

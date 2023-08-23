@@ -15,6 +15,7 @@ public interface Head {
   String themeColor();
   List<Font> fonts();
   List<Document> css();
+  List<Document> js();
 
   Manifest manifest();
 }

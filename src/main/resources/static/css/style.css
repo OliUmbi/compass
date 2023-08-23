@@ -1,0 +1,104 @@
+h1 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+h6 {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+small {
+  font-size: 0.875rem;
+  line-height: 1.2rem;
+  font-weight: 400;
+  margin: 0;
+  display: block;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  background-color: #ff1818;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+input, textarea {
+  border-radius: 0.2rem;
+  background-color: #e5e5e5;
+  border: none;
+  border-bottom: 0.2rem solid #ff1818;
+  padding: 0.5rem 1rem;
+  resize: none;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.board, .user {
+  max-width: 64rem;
+  width: 100%;
+  margin: auto;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.board-head, .user-head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.board-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.board-message {
+  padding: 1rem 2rem;
+  background-color: #e5e5e5;
+  border-bottom: 0.2rem solid #ff1818;
+  border-radius: 0.2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.board-message__head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.user-config, .user-message {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
