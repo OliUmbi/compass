@@ -1,4 +1,4 @@
-let ip;
+const ip = "192.168.0.133";
 
 const reload = () => {
   location.reload();
@@ -8,7 +8,6 @@ const post = () => {
   let result = document.getElementById("result");
   result.innerText = "";
 
-  ip = document.getElementById("ip").value;
   let name = document.getElementById("name").value;
   let title = document.getElementById("title").value;
   let description = document.getElementById("description").value;
