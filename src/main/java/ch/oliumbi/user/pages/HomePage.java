@@ -37,10 +37,6 @@ public class HomePage implements Page {
             <div class="user-config">
               <small>Configuration</small>
               <label>
-                <h6>IP-Address</h6>
-                <input type="text" id="ip" placeholder="x.x.x.x" value="192.168.0.xxx">
-              </label>
-              <label>
                 <h6>Name</h6>
                 <input type="text" id="name">
               </label>
