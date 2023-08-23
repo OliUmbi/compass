@@ -1,3 +1,5 @@
+let ip;
+
 const reload = () => {
   location.reload();
 }
@@ -6,7 +8,7 @@ const post = () => {
   let result = document.getElementById("result");
   result.innerText = "";
 
-  let ip = document.getElementById("ip").value;
+  ip = document.getElementById("ip").value;
   let name = document.getElementById("name").value;
   let title = document.getElementById("title").value;
   let description = document.getElementById("description").value;
@@ -24,7 +26,7 @@ const post = () => {
 
 setInterval(() => {
 
-  fetch("/message").then(data => {
+  fetch("http://" + ip + ":8080/message").then(data => {
 
     data.json().then(json => {
 
@@ -34,7 +36,7 @@ setInterval(() => {
         <div class="board-message">
           <div class="board-message__head">
             <h6>${message.title}</h6>
-            <p>${message.name} : ${message.ip}</p>
+            <p>${message.person.name} : ${message.person.ip}</p>
           </div>
           <p>${message.description}</p>
         </div>`

@@ -1,1 +1,19 @@
-[{"title":"Lorem ipsum","description":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut sodales velit. Fusce blandit pharetra lacus, nec varius diam vehicula vel. Suspendisse potenti. In lobortis fermentum augue, a viverra neque. Mauris at ullamcorper enim. Sed hendrerit bibendum massa posuere elementum. Nam sed blandit eros, vel auctor nibh. Integer ut porta ipsum, sit amet vehicula ipsum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse cursus suscipit lorem eu tincidunt. Ut accumsan eros ut fermentum mattis. Praesent a mattis libero.","ip":"[0:0:0:0:0:0:0:1]","name":"Oliver Umbricht"}]
+[
+  {
+    "person": {
+      "ip": "[0:0:0:0:0:0:0:1]",
+      "name": "Oliver Umbricht"
+    },
+    "title": "Lorem ipsum",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut sodales velit. Fusce blandit pharetra lacus, nec varius diam vehicula vel. Suspendisse potenti. In lobortis fermentum augue, a viverra neque. Mauris at ullamcorper enim. Sed hendrerit bibendum massa posuere elementum. Nam sed blandit eros, vel auctor nibh. Integer ut porta ipsum, sit amet vehicula ipsum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse cursus suscipit lorem eu tincidunt. Ut accumsan eros ut fermentum mattis. Praesent a mattis libero.",
+    "answers": [
+      {
+        "person": {
+          "ip": "[0:0:0:0:0:0:0:1]",
+          "name": "Oliver Umbricht"
+        },
+        "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ut sodales velit. Fusce blandit pharetra lacus, nec varius diam vehicula vel. Suspendisse potenti. In lobortis fermentum augue, a viverra neque. Mauris at ullamcorper enim. Sed hendrerit bibendum massa posuere elementum. Nam sed blandit eros, vel auctor nibh. Integer ut porta ipsum, sit amet vehicula ipsum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Suspendisse cursus suscipit lorem eu tincidunt. Ut accumsan eros ut fermentum mattis. Praesent a mattis libero."
+      }
+    ]
+  }
+]

@@ -5,7 +5,9 @@ import ch.oliumbi.compass.enums.Method;
 import ch.oliumbi.compass.route.Route;
 import ch.oliumbi.server.dtos.BoardMessage;
 import ch.oliumbi.server.dtos.BoardMessageRequest;
+import ch.oliumbi.server.dtos.Person;
 import ch.oliumbi.server.services.DataService;
+import java.util.ArrayList;
 import java.util.List;
 
 @Autoload
@@ -38,10 +40,13 @@ public class CreateBoardMessageRoute implements Route<BoardMessageRequest> {
     List<BoardMessage> boardMessages = dataService.getBoardMessages();
 
     boardMessages.add(new BoardMessage(
+        new Person(
+            body.name(),
+            ip
+        ),
         body.title(),
         body.description(),
-        ip,
-        body.name()
+        new ArrayList<>()
     ));
 
     dataService.write(boardMessages);
