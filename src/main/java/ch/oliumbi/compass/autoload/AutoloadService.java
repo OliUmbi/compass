@@ -15,7 +15,9 @@ public class AutoloadService {
     Reflection reflection = new Reflection(clazz);
     List<Class<?>> classes = reflection.load();
 
+    List<Class<?>> autoload = classes.stream().filter(aClass -> aClass.isAnnotationPresent(Autoload.class)).toList();
+
     AutoloadInstantiate autoloadInstantiate = new AutoloadInstantiate();
-    return classes.stream().map(autoloadInstantiate::instantiate).toList();
+    return autoload.stream().map(autoloadInstantiate::instantiate).toList();
   }
 }
