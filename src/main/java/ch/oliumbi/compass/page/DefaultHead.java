@@ -50,6 +50,11 @@ public class DefaultHead implements Head {
   }
 
   @Override
+  public List<Document> js() {
+    return new ArrayList<>();
+  }
+
+  @Override
   public Manifest manifest() {
     return new Manifest(
         "undefined",

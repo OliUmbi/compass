@@ -11,5 +11,5 @@ public interface Route<T> {
   Method method();
   Class<T> mapping();
 
-  Object handle(T body) throws Exception;
+  Object handle(T body, String ip) throws Exception;
 }

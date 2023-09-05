@@ -21,7 +21,7 @@ public class PingRoute implements Route<PingRequest> {
   }
 
   @Override
-  public Object handle(PingRequest body) throws Exception {
+  public Object handle(PingRequest body, String ip) throws Exception {
     return new PingResponse(body.message() + " pong");
   }
 }
