@@ -1,13 +1,8 @@
 package ch.oliumbi.playground.routes;
 
-import ch.oliumbi.compass.autoload.Autoload;
 import ch.oliumbi.compass.enums.Method;
-import ch.oliumbi.compass.enums.MimeType;
 import ch.oliumbi.compass.route.Route;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
-@Autoload
 public class PingRoute implements Route<PingRequest> {
 
   @Override

@@ -1,6 +1,5 @@
 package ch.oliumbi.playground.pages;
 
-import ch.oliumbi.compass.autoload.Autoload;
 import ch.oliumbi.compass.client.Client;
 import ch.oliumbi.compass.enums.Method;
 import ch.oliumbi.compass.page.Page;
@@ -8,7 +7,6 @@ import ch.oliumbi.playground.routes.PingRequest;
 import ch.oliumbi.playground.routes.PingResponse;
 import java.util.Optional;
 
-@Autoload
 public class HomePage implements Page {
 
   @Override

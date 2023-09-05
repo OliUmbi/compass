@@ -30,13 +30,6 @@
             <version>11.0.15</version>
         </dependency>
 
-        <!-- reflections -->
-        <dependency>
-            <groupId>org.reflections</groupId>
-            <artifactId>reflections</artifactId>
-            <version>0.10.2</version>
-        </dependency>
-
         <!-- json -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

@@ -14,8 +14,8 @@ public abstract class Compass {
   public static void start(Class<?> clazz, String[] arguments) {
     LOGGER.info("Started compass");
 
-    AutoloadService autoloadService = new AutoloadService();
-    List<Object> instances = autoloadService.autoload(clazz.getPackageName());
+    AutoloadService autoloadService = new AutoloadService(clazz);
+    List<Object> instances = autoloadService.autoload();
 
     HttpHandler httpHandler = new HttpHandler(instances);
 

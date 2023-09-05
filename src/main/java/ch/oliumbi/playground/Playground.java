@@ -1,6 +1,5 @@
 package ch.oliumbi.playground;
 
-import ch.oliumbi.compass.autoload.Autoload;
 import ch.oliumbi.compass.document.Document;
 import ch.oliumbi.compass.document.Font;
 import ch.oliumbi.compass.enums.MimeType;
@@ -10,7 +9,6 @@ import ch.oliumbi.compass.manifest.Manifest;
 import ch.oliumbi.compass.page.Head;
 import java.util.List;
 
-@Autoload
 public class Playground implements Head {
 
   @Override
