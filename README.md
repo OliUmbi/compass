@@ -10,6 +10,7 @@ The same, only different
 
 # features
 ## general
+- cors
 
 ## api
 - routing
