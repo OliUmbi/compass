@@ -4,5 +4,15 @@ public interface Sql {
 
   String driver();
 
-  String jdbc(String host, int port, String database);
+  String jdbc();
+
+  String host();
+
+  String port();
+
+  String database();
+
+  String username();
+
+  String password();
 }

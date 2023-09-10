@@ -1,6 +1,6 @@
 package ch.oliumbi.compass.sql;
 
-public class MySql implements Sql {
+public abstract class MySql extends AbstractSql {
 
   @Override
   public String driver() {
@@ -8,7 +8,7 @@ public class MySql implements Sql {
   }
 
   @Override
-  public String jdbc(String host, int port, String database) {
-    return "jdbc:mysql://" + host + ":" + port + "/" + database;
+  public String jdbc() {
+    return "jdbc:mysql://" + host() + ":" + port() + "/" + database();
   }
 }
