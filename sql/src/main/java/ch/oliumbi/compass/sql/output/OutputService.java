@@ -44,7 +44,18 @@ public class OutputService {
     return outputs;
   }
 
-  public Object value(ResultSet resultSet, Class<?> type, int index) throws CompassSqlException {
+  public boolean exists(ResultSet resultSet) throws CompassSqlException {
+    try {
+      resultSet.next();
+
+      return resultSet.getBoolean(1);
+    } catch (SQLException e) {
+      LOGGER.error("Failed to read exists result", e);
+      throw new CompassSqlException();
+    }
+  }
+
+  private Object value(ResultSet resultSet, Class<?> type, int index) throws CompassSqlException {
     try {
       if (type == byte[].class) {
         return resultSet.getBytes(index);

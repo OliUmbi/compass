@@ -7,14 +7,8 @@ import ch.oliumbi.compass.sql.pool.Pool;
 import ch.oliumbi.compass.sql.pool.PoolConnection;
 import ch.oliumbi.compass.sql.query.Query;
 import ch.oliumbi.compass.sql.query.QueryService;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.SQLTimeoutException;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -30,7 +24,7 @@ public abstract class AbstractSql implements Sql {
   private final OutputService outputService = new OutputService();
 
   public AbstractSql() {
-      pool = new Pool(jdbc(), username(), password(), poolSize(), poolInitial());
+    pool = new Pool(jdbc(), username(), password(), poolSize(), poolInitial());
   }
 
   @Override
@@ -80,16 +74,85 @@ public abstract class AbstractSql implements Sql {
 
   @Override
   public <T> Optional<T> querySingle(String sql, Class<T> output, Object... inputs) {
-    return Optional.empty();
+    try (PoolConnection connection = pool.lease()) {
+
+      Query query = queryService.parse(sql);
+
+      if (query.outputs().size() == 0) {
+        LOGGER.error("No into clause defined, maybe you want to use update() instead");
+        return Optional.empty();
+      }
+
+      PreparedStatement preparedStatement = connection.preparedStatement(query.executable());
+
+      preparedStatement = inputService.build(preparedStatement, query.inputs(), List.of(inputs));
+
+      ResultSet resultSet = preparedStatement.executeQuery();
+
+      List<T> result = outputService.resolve(resultSet, output, query.outputs());
+
+      if (result.size() > 1) {
+        LOGGER.error("Query returned multiple results, either query is invalid or query() should be used");
+        return Optional.empty();
+      }
+
+      if (result.size() == 0) {
+        LOGGER.warn("Query returned no results, either query is invalid or query() should be used");
+        return Optional.empty();
+      }
+
+      return Optional.of(result.get(0));
+    } catch (Exception e) {
+      LOGGER.error("Exception occurred while executing sql query", e);
+      return Optional.empty();
+    }
   }
 
   @Override
   public Optional<Integer> update(String sql, Object... inputs) {
-    return Optional.empty();
+
+    try (PoolConnection connection = pool.lease()) {
+
+      Query query = queryService.parse(sql);
+
+      if (query.outputs().size() > 0) {
+        LOGGER.error("Into clause defined, maybe you want to use update() instead");
+        return Optional.empty();
+      }
+
+      PreparedStatement preparedStatement = connection.preparedStatement(query.executable());
+
+      preparedStatement = inputService.build(preparedStatement, query.inputs(), List.of(inputs));
+
+      return Optional.of(preparedStatement.executeUpdate());
+    } catch (Exception e) {
+      LOGGER.error("Exception occurred while executing sql query", e);
+      return Optional.empty();
+    }
   }
 
   @Override
   public Optional<Boolean> exists(String sql, Object... inputs) {
-    return Optional.empty();
+
+    try (PoolConnection connection = pool.lease()) {
+
+      Query query = queryService.parse(sql);
+
+      if (query.outputs().size() > 0) {
+        LOGGER.error("Into clause defined, maybe you want to use update() instead");
+        return Optional.empty();
+      }
+
+      PreparedStatement preparedStatement = connection.preparedStatement(query.executable());
+
+      preparedStatement = inputService.build(preparedStatement, query.inputs(), List.of(inputs));
+
+      ResultSet resultSet = preparedStatement.executeQuery();
+
+      return Optional.of(outputService.exists(resultSet));
+    } catch (Exception e) {
+      LOGGER.error("Exception occurred while executing sql query", e);
+      return Optional.empty();
+    }
   }
 }
