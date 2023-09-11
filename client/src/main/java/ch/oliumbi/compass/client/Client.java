@@ -38,7 +38,7 @@ public class Client {
       }
 
       if (!Objects.equals(response.getMediaType(), MimeType.JSON.translate())) {
-        LOGGER.error("Media type is not json, type" + response.getMediaType());
+        LOGGER.error("Media type is not json, type " + response.getMediaType());
         return Optional.empty();
       }
 

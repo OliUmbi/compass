@@ -44,6 +44,7 @@ The same, only different
 - string queries
 - transactions
 - batch inserts
+- support for 1:n
 
 ## configuration
 - json

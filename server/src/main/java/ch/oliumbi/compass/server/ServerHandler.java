@@ -116,7 +116,6 @@ public class ServerHandler extends AbstractHandler {
             response.setContentType(MimeType.HTML.translate());
             response.getOutputStream().print(html);
           }
-
         }
       }
 
@@ -143,6 +142,5 @@ public class ServerHandler extends AbstractHandler {
       // todo handle exception
       LOGGER.error("Failed to handle request", e);
     }
-
   }
 }
