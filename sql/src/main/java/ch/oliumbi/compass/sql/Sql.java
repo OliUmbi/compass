@@ -26,8 +26,6 @@ public interface Sql {
 
   int poolInitial();
 
-  boolean enumAsString();
-
   PoolConnection connection() throws CompassSqlException;
 
   boolean connected();

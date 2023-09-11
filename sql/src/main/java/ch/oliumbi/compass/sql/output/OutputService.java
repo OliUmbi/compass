@@ -1,0 +1,59 @@
+package ch.oliumbi.compass.sql.output;
+
+import ch.oliumbi.compass.core.exceptions.CompassReflectionException;
+import ch.oliumbi.compass.core.reflection.Clazz;
+import ch.oliumbi.compass.sql.exceptions.CompassSqlException;
+import java.lang.reflect.Field;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class OutputService {
+
+  public static final Logger LOGGER = LoggerFactory.getLogger(OutputService.class);
+
+  public <T> List<T> resolve(ResultSet resultSet, Class<T> clazzOutput, List<String> queryOutputs)
+      throws CompassSqlException, CompassReflectionException {
+
+    List<T> outputs = new ArrayList<>();
+
+    try {
+      while (resultSet.next()) {
+
+        T output = Clazz.instantiate(clazzOutput);
+
+        for (int i = 0; i < queryOutputs.size(); i++) {
+          String queryOutput = queryOutputs.get(i);
+
+          Field field = Clazz.field(clazzOutput, queryOutput);
+          Object value = value(resultSet, field.getType(), (i + 1));
+
+          Clazz.fieldSet(output, queryOutput, value);
+        }
+
+        outputs.add(output);
+      }
+    } catch (SQLException e) {
+      LOGGER.error("Failed to read next value of result set", e);
+      throw new CompassSqlException();
+    }
+
+    return outputs;
+  }
+
+  public Object value(ResultSet resultSet, Class<?> type, int index) throws CompassSqlException {
+    try {
+      if (type == byte[].class) {
+        return resultSet.getBytes(index);
+      }
+
+      return resultSet.getObject(index, type);
+    } catch (SQLException e) {
+      LOGGER.error("Failed to convert value", e);
+      throw new CompassSqlException();
+    }
+  }
+}

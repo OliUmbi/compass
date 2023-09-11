@@ -1,14 +1,20 @@
 package ch.oliumbi.compass.sql;
 
 import ch.oliumbi.compass.sql.exceptions.CompassSqlException;
+import ch.oliumbi.compass.sql.input.InputService;
+import ch.oliumbi.compass.sql.output.OutputService;
 import ch.oliumbi.compass.sql.pool.Pool;
 import ch.oliumbi.compass.sql.pool.PoolConnection;
 import ch.oliumbi.compass.sql.query.Query;
 import ch.oliumbi.compass.sql.query.QueryService;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLTimeoutException;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
@@ -20,14 +26,11 @@ public abstract class AbstractSql implements Sql {
 
   private final Pool pool;
   private final QueryService queryService = new QueryService();
+  private final InputService inputService = new InputService();
+  private final OutputService outputService = new OutputService();
 
   public AbstractSql() {
       pool = new Pool(jdbc(), username(), password(), poolSize(), poolInitial());
-  }
-
-  @Override
-  public boolean enumAsString() {
-    return false;
   }
 
   @Override
@@ -62,15 +65,31 @@ public abstract class AbstractSql implements Sql {
         return Optional.empty();
       }
 
-      // todo inputs
+      PreparedStatement preparedStatement = connection.preparedStatement(query.executable());
 
-      // todo execute
+      preparedStatement = inputService.build(preparedStatement, query.inputs(), List.of(inputs));
 
-      // todo outputs
+      ResultSet resultSet = preparedStatement.executeQuery();
 
-      return Optional.empty();
-    } catch (Exception ignored) {
+      return Optional.of(outputService.resolve(resultSet, output, query.outputs()));
+    } catch (Exception e) {
+      LOGGER.error("Exception occurred while executing sql query", e);
       return Optional.empty();
     }
+  }
+
+  @Override
+  public <T> Optional<T> querySingle(String sql, Class<T> output, Object... inputs) {
+    return Optional.empty();
+  }
+
+  @Override
+  public Optional<Integer> update(String sql, Object... inputs) {
+    return Optional.empty();
+  }
+
+  @Override
+  public Optional<Boolean> exists(String sql, Object... inputs) {
+    return Optional.empty();
   }
 }
