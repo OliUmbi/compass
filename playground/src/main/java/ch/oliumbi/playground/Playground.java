@@ -59,7 +59,8 @@ public class Playground implements Head {
   @Override
   public List<Document> css() {
     return List.of(
-        new Document("/static/css/normalize.css", MimeType.CSS)
+        new Document("/static/css/normalize.css", MimeType.CSS),
+        new Document("/static/css/style.css", MimeType.CSS)
     );
   }
 

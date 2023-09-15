@@ -51,7 +51,7 @@ public class ServerHandler extends AbstractHandler {
 
       if (target.startsWith("/static")) {
 
-        InputStream resourceAsStream = Server.class.getResourceAsStream(target);
+        InputStream resourceAsStream = Compass.getClazz().getResourceAsStream(target);
 
         response.getOutputStream().write(resourceAsStream.readAllBytes());
       }
