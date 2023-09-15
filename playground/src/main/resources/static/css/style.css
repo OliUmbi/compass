@@ -9,6 +9,10 @@ main {
   max-width: 100rem;
   margin: auto;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 2rem;
 }
 
 h1, h2, p {

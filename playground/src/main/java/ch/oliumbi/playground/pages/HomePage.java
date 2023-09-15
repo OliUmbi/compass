@@ -17,6 +17,7 @@ public class HomePage implements Page {
     return """
         <main>
           <h1>Selektionstag 15.09.2023</h1>
+          <p>Es hat funktioniert</p>
         </main>
         """;
   }
