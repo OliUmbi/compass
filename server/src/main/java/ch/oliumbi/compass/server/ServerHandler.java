@@ -31,10 +31,10 @@ public class ServerHandler extends AbstractHandler {
 
   public ServerHandler() {
 
-    pages.addAll(Compass.getInstances(Page.class));
-    routes.addAll(Compass.getInstances(Route.class));
+    pages.addAll(Compass.instances(Page.class));
+    routes.addAll(Compass.instances(Route.class));
 
-    for (Head instance : Compass.getInstances(Head.class)) {
+    for (Head instance : Compass.instances(Head.class)) {
       head = instance;
     }
   }
@@ -51,7 +51,7 @@ public class ServerHandler extends AbstractHandler {
 
       if (target.startsWith("/static")) {
 
-        InputStream resourceAsStream = Compass.getClazz().getResourceAsStream(target);
+        InputStream resourceAsStream = Compass.resource(target).openStream();
 
         response.getOutputStream().write(resourceAsStream.readAllBytes());
       }

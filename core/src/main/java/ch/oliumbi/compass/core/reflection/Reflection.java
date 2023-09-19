@@ -10,9 +10,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Clazz {
+public class Reflection {
 
-  public static final Logger LOGGER = LoggerFactory.getLogger(Clazz.class);
+  public static final Logger LOGGER = LoggerFactory.getLogger(Reflection.class);
 
   public static List<Field> fields(Class<?> clazz) {
     List<Field> fields = new ArrayList<>(List.of(clazz.getDeclaredFields()));

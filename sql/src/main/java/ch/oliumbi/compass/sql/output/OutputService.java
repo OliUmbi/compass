@@ -1,7 +1,7 @@
 package ch.oliumbi.compass.sql.output;
 
 import ch.oliumbi.compass.core.exceptions.CompassReflectionException;
-import ch.oliumbi.compass.core.reflection.Clazz;
+import ch.oliumbi.compass.core.reflection.Reflection;
 import ch.oliumbi.compass.sql.exceptions.CompassSqlException;
 import java.lang.reflect.Field;
 import java.sql.ResultSet;
@@ -23,15 +23,15 @@ public class OutputService {
     try {
       while (resultSet.next()) {
 
-        T output = Clazz.instantiate(clazzOutput);
+        T output = Reflection.instantiate(clazzOutput);
 
         for (int i = 0; i < queryOutputs.size(); i++) {
           String queryOutput = queryOutputs.get(i);
 
-          Field field = Clazz.field(clazzOutput, queryOutput);
+          Field field = Reflection.field(clazzOutput, queryOutput);
           Object value = value(resultSet, field.getType(), (i + 1));
 
-          Clazz.fieldSet(output, queryOutput, value);
+          Reflection.fieldSet(output, queryOutput, value);
         }
 
         outputs.add(output);

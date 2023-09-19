@@ -15,10 +15,10 @@
   <name>${project.artifactId}</name>
 
   <dependencies>
-    <!-- javafx base -->
+    <!-- core -->
     <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-base</artifactId>
+      <groupId>ch.oliumbi.compass</groupId>
+      <artifactId>core</artifactId>
     </dependency>
 
     <!-- javafx controls -->

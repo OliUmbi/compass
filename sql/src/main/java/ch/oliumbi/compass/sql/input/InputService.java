@@ -1,7 +1,7 @@
 package ch.oliumbi.compass.sql.input;
 
 import ch.oliumbi.compass.core.exceptions.CompassReflectionException;
-import ch.oliumbi.compass.core.reflection.Clazz;
+import ch.oliumbi.compass.core.reflection.Reflection;
 import ch.oliumbi.compass.sql.exceptions.CompassSqlException;
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
@@ -27,9 +27,9 @@ public class InputService {
         continue;
       }
 
-      for (Field field : Clazz.fields(objectInput.getClass())) {
+      for (Field field : Reflection.fields(objectInput.getClass())) {
         String name = field.getName();
-        inputs.add(new Input(name, Clazz.fieldGet(objectInput, name)));
+        inputs.add(new Input(name, Reflection.fieldGet(objectInput, name)));
       }
     }
 
