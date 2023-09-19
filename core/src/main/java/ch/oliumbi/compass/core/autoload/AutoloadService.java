@@ -5,10 +5,15 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AutoloadService {
+
+  public static final Logger LOGGER = LoggerFactory.getLogger(AutoloadService.class);
 
   private final Class<?> clazz;
 
@@ -27,23 +32,36 @@ public class AutoloadService {
   }
 
   public List<Class<?>> load() {
+
     ClassLoader classLoader = clazz.getClassLoader();
     String packageName = clazz.getPackageName();
+
+    try {
+      Class<?> aClass = classLoader.loadClass("ch.oliumbi.playground.Home");
+
+      Arrays.stream(aClass.getDeclaredAnnotations()).forEach(System.out::println);
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    }
 
     return loadPackage(classLoader, packageName);
   }
 
   private List<Class<?>> loadPackage(ClassLoader classLoader, String packageName) {
+
     List<Class<?>> classes = new ArrayList<>();
 
     for (String file : getFiles(classLoader, packageName)) {
+
+      System.out.println(file);
 
       if (file.endsWith(".class")) {
         classes.add(getClass(file, packageName));
         continue;
       }
+
       if (file.contains(".")) {
-        System.out.println("what?");
+        LOGGER.warn("Found non class files, file " + file);
         continue;
       }
 
@@ -57,6 +75,7 @@ public class AutoloadService {
     InputStream inputStream = classLoader.getResourceAsStream(packageName.replaceAll("[.]", "/"));
 
     if (inputStream == null) {
+      LOGGER.warn("Failed to get package files, package " + packageName);
       return Collections.emptyList();
     }
 
@@ -67,10 +86,9 @@ public class AutoloadService {
 
   private Class<?> getClass(String className, String packageName) {
     try {
-      return Class.forName(packageName + "."
-          + className.substring(0, className.lastIndexOf('.')));
+      return Class.forName(packageName + "." + className.substring(0, className.lastIndexOf('.')));
     } catch (ClassNotFoundException e) {
-      // handle the exception
+      LOGGER.warn("Failed to load class, name " + className, e);
     }
     return null;
   }

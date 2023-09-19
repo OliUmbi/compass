@@ -10,6 +10,4 @@ public class Main {
 
     Fx.run(args, Home.class);
   }
-
-
 }
