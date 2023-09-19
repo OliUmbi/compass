@@ -11,20 +11,26 @@
   </parent>
 
   <groupId>ch.oliumbi.compass</groupId>
-  <artifactId>server</artifactId>
+  <artifactId>fx</artifactId>
   <name>${project.artifactId}</name>
 
   <dependencies>
-    <!-- core -->
+    <!-- javafx base -->
     <dependency>
-      <groupId>ch.oliumbi.compass</groupId>
-      <artifactId>core</artifactId>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-base</artifactId>
     </dependency>
 
-    <!-- jetty server -->
+    <!-- javafx controls -->
     <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-server</artifactId>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+    </dependency>
+
+    <!-- javafx fxml -->
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
     </dependency>
   </dependencies>
 </project>

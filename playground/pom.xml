@@ -11,9 +11,9 @@
     <version>development</version>
 
     <properties>
-        <java.version>19</java.version>
-        <maven.compiler.target>19</maven.compiler.target>
-        <maven.compiler.source>19</maven.compiler.source>
+        <java.version>20</java.version>
+        <maven.compiler.target>20</maven.compiler.target>
+        <maven.compiler.source>20</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -21,11 +21,6 @@
         <dependency>
             <groupId>ch.oliumbi.compass</groupId>
             <artifactId>core</artifactId>
-            <version>development</version>
-        </dependency>
-        <dependency>
-            <groupId>ch.oliumbi.compass</groupId>
-            <artifactId>server</artifactId>
             <version>development</version>
         </dependency>
     </dependencies>
