@@ -12,10 +12,14 @@ import org.slf4j.LoggerFactory;
 public class Fx extends Application {
 
   public static final Logger LOGGER = LoggerFactory.getLogger(Fx.class);
-  public static Stage stage;
+  public static Class<?> clazz;
+  public static String[] args;
   public static Class<? extends Window> first;
+  public static Stage stage;
 
-  public static void run(String[] args, Class<? extends Window> first) {
+  public static void run(String[] args, Class<?> clazz, Class<? extends Window> first) {
+    Fx.clazz = clazz;
+    Fx.args = args;
     Fx.first = first;
 
     launch(args);
@@ -24,6 +28,8 @@ public class Fx extends Application {
   @Override
   public void start(Stage stage) {
     Fx.stage = stage;
+
+    Compass.start(clazz, args);
 
     open(first);
   }

@@ -4,6 +4,8 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AutoloadInstantiate {
 
@@ -36,13 +38,13 @@ public class AutoloadInstantiate {
       return instance;
     } catch (InstantiationException e) {
       // todo proper error handling
-      throw new RuntimeException(clazz.getName() + ", is an abstract class");
+      throw new RuntimeException(clazz.getName() + ", is an abstract class", e);
     } catch (IllegalAccessException e) {
       // todo proper error handling
-      throw new RuntimeException(clazz.getName() + ", constructor is inaccessible");
+      throw new RuntimeException(clazz.getName() + ", constructor is inaccessible", e);
     } catch (InvocationTargetException e) {
       // todo proper error handling
-      throw new RuntimeException(clazz.getName() + ", constructor threw an exception");
+      throw new RuntimeException(clazz.getName() + ", constructor threw an exception", e);
     }
   }
 

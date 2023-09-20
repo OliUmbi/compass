@@ -18,14 +18,19 @@ public abstract class Window {
   public void show(Stage stage) {
     this.stage = stage;
 
-    try {
-      Parent fxml = FXMLLoader.load(Compass.resource(fxml()));
+    init();
 
-      stage.setScene(new Scene(fxml));
-    } catch (IOException e) {
-      LOGGER.error("Failed to load fxml, path " + fxml(), e);
+    Parent parent = parent();
+
+    if (parent() == null) {
+      try {
+        parent = FXMLLoader.load(Compass.resource(fxml()));
+      } catch (IOException e) {
+        LOGGER.error("Failed to load fxml, path " + fxml(), e);
+      }
     }
 
+    stage.setScene(new Scene(parent));
     stage.setTitle(title());
     stage.setWidth(width());
     stage.setMaxWidth(widthMax());
@@ -46,13 +51,21 @@ public abstract class Window {
     stage.close();
   }
 
-  public abstract String fxml();
+  public abstract String title();
+
+  public String fxml() {
+    return null;
+  }
+
+  public Parent parent() {
+    return null;
+  }
+
+  public abstract void init();
 
   public boolean newWindow() {
     return false;
   }
-
-  public abstract String title();
 
   public double width() {
     return 500.0;
