@@ -4,10 +4,13 @@ import ch.oliumbi.compass.core.annotations.Autoload;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.JarURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
+import java.util.jar.JarFile;
+import java.util.zip.ZipEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,7 +26,18 @@ public class AutoloadService {
 
   public List<Object> autoload() {
 
-    List<Class<?>> classes = load();
+    ClassLoader classLoader = clazz.getClassLoader();
+    String packageName = clazz.getPackageName();
+    URL url = classLoader.getResource(packageName.replace(".", "/"));
+
+    List<Class<?>> classes = new ArrayList<>();
+
+    for (AutoloadPackage autoloadPackage : autoloadPackages()) {
+
+      if (url.getProtocol().equals(autoloadPackage.protocol())) {
+        classes.addAll(autoloadPackage.classes(classLoader, url, packageName));
+      }
+    }
 
     List<Class<?>> autoload = classes.stream().filter(aClass -> aClass.isAnnotationPresent(Autoload.class)).toList();
 
@@ -31,65 +45,10 @@ public class AutoloadService {
     return autoload.stream().map(autoloadInstantiate::instantiate).toList();
   }
 
-  public List<Class<?>> load() {
-
-    ClassLoader classLoader = clazz.getClassLoader();
-    String packageName = clazz.getPackageName();
-
-    try {
-      Class<?> aClass = classLoader.loadClass("ch.oliumbi.playground.Home");
-
-      Arrays.stream(aClass.getDeclaredAnnotations()).forEach(System.out::println);
-    } catch (ClassNotFoundException e) {
-      throw new RuntimeException(e);
-    }
-
-    return loadPackage(classLoader, packageName);
-  }
-
-  private List<Class<?>> loadPackage(ClassLoader classLoader, String packageName) {
-
-    List<Class<?>> classes = new ArrayList<>();
-
-    for (String file : getFiles(classLoader, packageName)) {
-
-      System.out.println(file);
-
-      if (file.endsWith(".class")) {
-        classes.add(getClass(file, packageName));
-        continue;
-      }
-
-      if (file.contains(".")) {
-        LOGGER.warn("Found non class files, file " + file);
-        continue;
-      }
-
-      classes.addAll(loadPackage(classLoader, packageName + "." + file));
-    }
-
-    return classes;
-  }
-
-  private List<String> getFiles(ClassLoader classLoader, String packageName) {
-    InputStream inputStream = classLoader.getResourceAsStream(packageName.replaceAll("[.]", "/"));
-
-    if (inputStream == null) {
-      LOGGER.warn("Failed to get package files, package " + packageName);
-      return Collections.emptyList();
-    }
-
-    BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-
-    return reader.lines().toList();
-  }
-
-  private Class<?> getClass(String className, String packageName) {
-    try {
-      return Class.forName(packageName + "." + className.substring(0, className.lastIndexOf('.')));
-    } catch (ClassNotFoundException e) {
-      LOGGER.warn("Failed to load class, name " + className, e);
-    }
-    return null;
+  private List<AutoloadPackage> autoloadPackages() {
+    return List.of(
+        new AutoloadPackageFile(),
+        new AutoloadPackageJar()
+    );
   }
 }
