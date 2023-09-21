@@ -11,6 +11,8 @@ The same, only different
 # features
 ## general
 - cors
+- csv json import
+- readme docy
 
 ## api
 - routing

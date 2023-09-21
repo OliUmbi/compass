@@ -68,7 +68,7 @@ public abstract class Window {
   }
 
   public double width() {
-    return 500.0;
+    return 1000.0;
   }
 
   public double widthMax() {
@@ -80,7 +80,7 @@ public abstract class Window {
   }
 
   public double height() {
-    return 500.0;
+    return 750.0;
   }
 
   public double heightMax() {

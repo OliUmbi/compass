@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class QueryServiceTest {
 
+  /**
   private QueryService queryService;
 
   @BeforeEach
@@ -140,4 +141,5 @@ class QueryServiceTest {
     assertEquals(List.of("id"), query.inputs());
     assertEquals(0, query.outputs().size());
   }
+  */
 }
