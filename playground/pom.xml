@@ -25,7 +25,7 @@
     </dependency>
     <dependency>
       <groupId>ch.oliumbi.compass</groupId>
-      <artifactId>fx</artifactId>
+      <artifactId>server</artifactId>
       <version>development</version>
     </dependency>
   </dependencies>

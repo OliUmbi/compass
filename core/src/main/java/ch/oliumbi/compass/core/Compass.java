@@ -15,7 +15,7 @@ public class Compass {
 
   private Compass() {}
 
-  public static void start(Class<?> clazz, String[] arguments) {
+  public static void start(Class<?> clazz) {
     LOGGER.info("Started compass");
 
     Compass.clazz = clazz;

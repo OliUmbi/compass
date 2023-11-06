@@ -1,12 +1,12 @@
 package ch.oliumbi.playground;
 
 import ch.oliumbi.compass.core.Compass;
-import ch.oliumbi.compass.fx.Fx;
-import javafx.application.Platform;
+import ch.oliumbi.compass.server.Server;
 
 public class Main {
 
   public static void main(String[] args) {
-    Fx.run(args, Main.class, Home.class);
+    Compass.start(Main.class);
+    Server.start();
   }
 }

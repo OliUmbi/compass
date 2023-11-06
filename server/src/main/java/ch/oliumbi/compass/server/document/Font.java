@@ -2,38 +2,24 @@ package ch.oliumbi.compass.server.document;
 
 public record Font(
     String name,
-    String path,
-    String format,
-    String weight
+    String weight,
+    String path
 ) {
-
-  public Font(String name, String path, String format) {
-    this(name, path, format, null);
-  }
 
   @Override
   public String toString() {
-    String fontFace = String.format("""  
+
+    return String.format("""  
             @font-face {
-              font-family: %s;
+              font-family: '%s';
+              font-weight: %s;
               font-style: normal;
               font-display: swap;
-              src: url(%s) format(%s);
+              src: url(%s);
+            }
             """,
         name,
-        path,
-        format);
-
-    if (weight != null) {
-      fontFace += String.format("""
-            font-weight: %s;
-          """, weight);
-    }
-
-    fontFace += """
-        }
-        """;
-
-    return fontFace;
+        weight,
+        path);
   }
 }
