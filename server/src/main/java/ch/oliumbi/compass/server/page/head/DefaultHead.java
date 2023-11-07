@@ -1,9 +1,9 @@
-package ch.oliumbi.compass.server.page;
+package ch.oliumbi.compass.server.page.head;
 
-import ch.oliumbi.compass.server.document.Document;
-import ch.oliumbi.compass.server.document.Font;
-import ch.oliumbi.compass.server.manifest.Display;
-import ch.oliumbi.compass.server.manifest.Manifest;
+import ch.oliumbi.compass.server.file.Document;
+import ch.oliumbi.compass.server.file.Font;
+import ch.oliumbi.compass.server.page.manifest.Display;
+import ch.oliumbi.compass.server.page.manifest.Manifest;
 import java.util.ArrayList;
 import java.util.List;
 

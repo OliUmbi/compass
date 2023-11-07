@@ -1,4 +1,4 @@
-package ch.oliumbi.compass.server.manifest;
+package ch.oliumbi.compass.server.page.manifest;
 
 import java.util.ArrayList;
 import java.util.List;

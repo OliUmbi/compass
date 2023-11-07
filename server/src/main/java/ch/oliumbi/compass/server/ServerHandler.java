@@ -1,9 +1,9 @@
 package ch.oliumbi.compass.server;
 
 import ch.oliumbi.compass.core.Compass;
-import ch.oliumbi.compass.server.document.Font;
-import ch.oliumbi.compass.server.page.DefaultHead;
-import ch.oliumbi.compass.server.page.Head;
+import ch.oliumbi.compass.server.file.Font;
+import ch.oliumbi.compass.server.page.head.DefaultHead;
+import ch.oliumbi.compass.server.page.head.Head;
 import ch.oliumbi.compass.server.page.Page;
 import ch.oliumbi.compass.server.route.Route;
 import ch.oliumbi.compass.core.enums.Method;
@@ -11,6 +11,7 @@ import ch.oliumbi.compass.core.enums.MimeType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,15 @@ public class ServerHandler extends AbstractHandler {
 
     response.setHeader("Access-Control-Allow-Origin", "*");
     response.setHeader("Access-Control-Allow-Credentials", "true");
+
+    System.out.println(request.getPathInfo());
+    System.out.println(request.getParameterMap());
+    System.out.println(request.getMethod());
+    try {
+      System.out.println(request.getReader().lines().collect(Collectors.joining()));
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    };
 
     try {
 
@@ -106,7 +116,7 @@ public class ServerHandler extends AbstractHandler {
                     .collect(Collectors.joining())
             );
 
-            html += page.body();
+            html += page.body().render();
 
             html += """
                 </body>
@@ -133,7 +143,7 @@ public class ServerHandler extends AbstractHandler {
           }
 
           response.setContentType(MimeType.JSON.translate());
-          response.getOutputStream().print(objectMapper.writeValueAsString(route.handle(body, request.getRemoteAddr())));
+          response.getOutputStream().print(objectMapper.writeValueAsString(route.handle(body)));
         }
       }
 

@@ -1,4 +1,4 @@
-package ch.oliumbi.compass.server.document;
+package ch.oliumbi.compass.server.file;
 
 public record Font(
     String name,
