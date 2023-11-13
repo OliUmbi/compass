@@ -7,4 +7,5 @@ public interface RequestTarget {
 
   Path path();
   Method method();
+  Response handle(Request);
 }

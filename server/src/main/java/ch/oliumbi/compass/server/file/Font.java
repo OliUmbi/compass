@@ -22,4 +22,6 @@ public record Font(
         weight,
         path);
   }
+
+  // todo rethink complex constructs, maybe standardized for png and stuff like that
 }

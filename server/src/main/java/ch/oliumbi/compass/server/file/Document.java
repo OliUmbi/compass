@@ -6,5 +6,5 @@ public record Document(
     String path,
     MimeType mimeType
 ) {
-
+ // todo move to own package for everything concerning file / document handling
 }

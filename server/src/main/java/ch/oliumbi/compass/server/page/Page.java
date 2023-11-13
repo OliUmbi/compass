@@ -1,12 +1,13 @@
 package ch.oliumbi.compass.server.page;
 
 import ch.oliumbi.compass.core.enums.Method;
-import ch.oliumbi.compass.server.page.component.Component;
+import ch.oliumbi.compass.server.html.Html;
+import ch.oliumbi.compass.server.path.Path;
 import ch.oliumbi.compass.server.request.RequestTarget;
 
-public abstract class Page implements RequestTarget {
+public abstract class Page extends Html implements RequestTarget {
 
-  protected abstract Component body();
+
 
   @Override
   public Method method() {
