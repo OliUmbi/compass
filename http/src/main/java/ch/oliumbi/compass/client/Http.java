@@ -11,9 +11,9 @@ import org.eclipse.jetty.client.util.StringRequestContent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Client {
+public class Http {
 
-  public static final Logger LOGGER = LoggerFactory.getLogger(Client.class);
+  public static final Logger LOGGER = LoggerFactory.getLogger(Http.class);
 
   private final HttpClient httpClient = new HttpClient();
   private final ObjectMapper objectMapper = new ObjectMapper();

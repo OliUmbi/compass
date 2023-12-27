@@ -11,9 +11,9 @@
   <version>development</version>
 
   <properties>
-    <java.version>20</java.version>
-    <maven.compiler.target>20</maven.compiler.target>
-    <maven.compiler.source>20</maven.compiler.source>
+    <java.version>21</java.version>
+    <maven.compiler.target>21</maven.compiler.target>
+    <maven.compiler.source>21</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 

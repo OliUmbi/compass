@@ -13,7 +13,7 @@
     <modules>
         <module>core</module>
         <module>server</module>
-        <module>client</module>
+        <module>http</module>
         <module>crypt</module>
         <module>sql</module>
     </modules>
@@ -30,7 +30,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.7</version>
+            <version>1.4.12</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
