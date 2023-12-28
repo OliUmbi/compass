@@ -1,6 +1,6 @@
-package ch.oliumbi.compass.server.html.enums;
+package ch.oliumbi.compass.server.ui.enums;
 
-import ch.oliumbi.compass.server.html.Renderable;
+import ch.oliumbi.compass.server.ui.Renderable;
 
 public enum Language implements Renderable {
   ENGLISH,

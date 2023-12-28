@@ -1,4 +1,4 @@
-package ch.oliumbi.compass.server.html.script;
+package ch.oliumbi.compass.server.ui.script;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

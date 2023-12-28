@@ -1,6 +1,4 @@
-package ch.oliumbi.compass.server.html;
-
-import java.util.List;
+package ch.oliumbi.compass.server.ui;
 
 public abstract class Head implements Renderable {
 
