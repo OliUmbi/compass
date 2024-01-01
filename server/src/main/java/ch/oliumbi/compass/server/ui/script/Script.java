@@ -1,7 +1,5 @@
 package ch.oliumbi.compass.server.ui.script;
 
-import static java.lang.StringTemplate.STR;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,13 +57,17 @@ public class Script {
   }
 
   public static void main(String[] args) {
-    Script script = new Script().event("meun", """
+    Script script = new Script()
+        .event("meun", """
                 if (component.style.right === "") {
                   component.style.right = "0%"
                 } else {
                   component.style.right = ""
                 }
-        """);
+        """)
+        .click("""
+            event("sdaf")
+            """);
 
     System.out.println(script.render("test-icon"));
   }

@@ -5,9 +5,9 @@ import ch.oliumbi.compass.core.enums.MimeType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.Optional;
+import org.eclipse.jetty.client.ContentResponse;
 import org.eclipse.jetty.client.HttpClient;
-import org.eclipse.jetty.client.api.ContentResponse;
-import org.eclipse.jetty.client.util.StringRequestContent;
+import org.eclipse.jetty.client.StringRequestContent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +28,7 @@ public class Http {
       );
 
       ContentResponse response = httpClient.newRequest(url)
-          .method(method.name())
+          .method(method.translate())
           .body(content)
           .send();
 

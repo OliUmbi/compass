@@ -3,7 +3,7 @@ package ch.oliumbi.compass.core.enums;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public enum MimeType implements Translatable {
+public enum MimeType implements Translatable<String> {
   HTML,
   CSS,
   JAVASCRIPT,

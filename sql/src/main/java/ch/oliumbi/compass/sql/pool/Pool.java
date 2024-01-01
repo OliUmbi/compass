@@ -3,7 +3,6 @@ package ch.oliumbi.compass.sql.pool;
 import static ch.oliumbi.compass.sql.AbstractSql.LOGGER;
 
 import ch.oliumbi.compass.sql.exceptions.CompassSqlException;
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.SQLTimeoutException;

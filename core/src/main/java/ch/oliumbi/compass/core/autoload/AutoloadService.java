@@ -1,16 +1,9 @@
 package ch.oliumbi.compass.core.autoload;
 
 import ch.oliumbi.compass.core.annotations.Autoload;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.JarURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.jar.JarFile;
-import java.util.zip.ZipEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

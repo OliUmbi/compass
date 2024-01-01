@@ -3,6 +3,7 @@ package ch.oliumbi.compass.crypt;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 
 /**
+ * best
  * + memory hardness
  * - time intensive
  */

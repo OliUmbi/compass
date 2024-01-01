@@ -1,9 +1,7 @@
 package ch.oliumbi.compass.sql;
 
 import ch.oliumbi.compass.sql.exceptions.CompassSqlException;
-import ch.oliumbi.compass.sql.pool.Pool;
 import ch.oliumbi.compass.sql.pool.PoolConnection;
-import java.sql.Connection;
 import java.util.List;
 import java.util.Optional;
 

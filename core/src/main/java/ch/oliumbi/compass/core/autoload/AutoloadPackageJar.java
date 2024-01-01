@@ -1,15 +1,10 @@
 package ch.oliumbi.compass.core.autoload;
 
-import ch.qos.logback.core.boolex.EvaluationException;
 import java.net.JarURLConnection;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.JarFile;
-import java.util.stream.Stream;
 import java.util.zip.ZipEntry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

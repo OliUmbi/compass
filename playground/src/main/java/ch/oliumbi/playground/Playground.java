@@ -4,10 +4,10 @@ import ch.oliumbi.compass.core.annotations.Autoload;
 import ch.oliumbi.compass.core.enums.MimeType;
 import ch.oliumbi.compass.server.file.Document;
 import ch.oliumbi.compass.server.file.Font;
+import ch.oliumbi.compass.server.page.head.Head;
 import ch.oliumbi.compass.server.page.manifest.Display;
 import ch.oliumbi.compass.server.page.manifest.Icon;
 import ch.oliumbi.compass.server.page.manifest.Manifest;
-import ch.oliumbi.compass.server.page.head.Head;
 import java.util.ArrayList;
 import java.util.List;
 

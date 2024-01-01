@@ -1,17 +1,35 @@
-//package ch.oliumbi.compass.server.ui.component;
-//
-//import ch.oliumbi.compass.server.ui.Renderable;
-//
-//public abstract class Component implements Renderable {
-//
-//  protected abstract String tag();
-//
-//  protected abstract String children();
-//
-//  protected abstract Style style();
-//
-//  @Override
-//  public String render() {
-//    return String.format("<%s style=\"%s\">%s</%s>", tag(), style().render(), children(), tag());
-//  }
-//}
+package ch.oliumbi.compass.server.ui.component;
+
+
+import ch.oliumbi.compass.server.ui.script.Script;
+import ch.oliumbi.compass.server.ui.style.State;
+
+public abstract class Component {
+
+  public abstract String tag();
+  public abstract String value();
+
+  public Script script() {
+    return null;
+  }
+
+  public State xl() {
+    return null;
+  }
+
+  public State l() {
+    return null;
+  }
+
+  public State m() {
+    return null;
+  }
+
+  public State s() {
+    return null;
+  }
+
+  public State xs() {
+    return null;
+  }
+}

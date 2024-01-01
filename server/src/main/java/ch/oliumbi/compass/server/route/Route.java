@@ -1,9 +1,12 @@
 package ch.oliumbi.compass.server.route;
 
-import ch.oliumbi.compass.server.request.RequestTarget;
+import ch.oliumbi.compass.core.enums.Method;
+import ch.oliumbi.compass.server.request.Request;
+import ch.oliumbi.compass.server.response.Response;
 
-public interface Route<T> extends RequestTarget {
+public interface Route {
 
-  Class<T> mapping();
-  Object handle(T body) throws Exception;
+  String path();
+  Method method();
+  Response handle(Request request, Response response);
 }
