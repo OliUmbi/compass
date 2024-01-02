@@ -3,6 +3,7 @@ package ch.oliumbi.compass.server;
 import org.eclipse.jetty.server.HttpConfiguration;
 import org.eclipse.jetty.server.HttpConnectionFactory;
 import org.eclipse.jetty.server.ServerConnector;
+import org.eclipse.jetty.server.handler.gzip.GzipHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,7 +11,7 @@ public class Server {
 
   public static final Logger LOGGER = LoggerFactory.getLogger(Server.class);
 
-  public static void start() {
+  public static void start(int port) {
 
     try {
       org.eclipse.jetty.server.Server server = new org.eclipse.jetty.server.Server();
@@ -21,10 +22,14 @@ public class Server {
       HttpConnectionFactory httpConnectionFactory = new HttpConnectionFactory(httpConfiguration);
 
       ServerConnector serverConnector = new ServerConnector(server, httpConnectionFactory);
-      serverConnector.setPort(8080);
-
+      serverConnector.setPort(port);
       server.addConnector(serverConnector);
-      server.setHandler(entrypoint);
+
+      GzipHandler gzipHandler = new GzipHandler();
+      server.setHandler(gzipHandler);
+      gzipHandler.setMinGzipSize(1024);
+      gzipHandler.setHandler(entrypoint);
+
       server.start();
 
       LOGGER.info("Started web server");

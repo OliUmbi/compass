@@ -7,6 +7,6 @@ public class Main {
 
   public static void main(String[] args) {
     Compass.start(Main.class);
-    Server.start();
+    Server.start(8080);
   }
 }

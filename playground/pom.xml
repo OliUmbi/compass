@@ -28,6 +28,11 @@
       <artifactId>server</artifactId>
       <version>development</version>
     </dependency>
+    <dependency>
+      <groupId>ch.oliumbi.compass</groupId>
+      <artifactId>ui</artifactId>
+      <version>development</version>
+    </dependency>
   </dependencies>
 
   <build>

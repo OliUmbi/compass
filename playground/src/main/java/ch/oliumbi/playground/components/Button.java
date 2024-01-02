@@ -1,9 +1,10 @@
 package ch.oliumbi.playground.components;
 
-import ch.oliumbi.compass.server.ui.component.Component;
-import ch.oliumbi.compass.server.ui.script.Script;
-import ch.oliumbi.compass.server.ui.style.State;
-import ch.oliumbi.compass.server.ui.style.Style;
+import ch.oliumbi.compass.ui.component.Component;
+import ch.oliumbi.compass.ui.script.Script;
+import ch.oliumbi.compass.ui.style.State;
+import ch.oliumbi.compass.ui.style.Style;
+import java.util.List;
 
 public class Button extends Component {
 
@@ -18,8 +19,11 @@ public class Button extends Component {
     return "button";
   }
 
-  public String value() {
-    return STR."hello \{value}";
+  @Override
+  protected List<Component> components() {
+    return List.of(
+        new Text("p", STR."hello \{value}")
+    );
   }
 
   @Override

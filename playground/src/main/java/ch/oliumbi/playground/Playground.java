@@ -1,88 +1,75 @@
 package ch.oliumbi.playground;
 
 import ch.oliumbi.compass.core.annotations.Autoload;
-import ch.oliumbi.compass.core.enums.MimeType;
-import ch.oliumbi.compass.server.file.Document;
-import ch.oliumbi.compass.server.file.Font;
-import ch.oliumbi.compass.server.page.head.Head;
-import ch.oliumbi.compass.server.page.manifest.Display;
-import ch.oliumbi.compass.server.page.manifest.Icon;
-import ch.oliumbi.compass.server.page.manifest.Manifest;
-import java.util.ArrayList;
+import ch.oliumbi.compass.core.enums.Language;
+import ch.oliumbi.compass.core.enums.Method;
+import ch.oliumbi.compass.core.enums.Status;
+import ch.oliumbi.compass.server.request.Request;
+import ch.oliumbi.compass.server.response.Response;
+import ch.oliumbi.compass.server.route.Route;
+import ch.oliumbi.compass.ui.Ui;
+import ch.oliumbi.compass.ui.color.Color;
+import ch.oliumbi.compass.ui.component.Component;
+import ch.oliumbi.compass.ui.font.Font;
+import ch.oliumbi.compass.ui.image.Image;
+import ch.oliumbi.compass.ui.manifest.Manifest;
+import java.util.Collections;
 import java.util.List;
 
 @Autoload
-public class Playground implements Head {
+public abstract class Playground extends Ui implements Route {
+
+  protected abstract List<Component> load(Request request);
 
   @Override
-  public String language() {
-    return "en";
+  public Response handle(Request request, Response response) {
+
+    List<Component> components = load(request);
+
+    response.setStatus(Status.OK);
+    response.setBody(render(components));
+
+    return response;
   }
 
   @Override
-  public String charset() {
-    return "utf-8";
+  public Method method() {
+    return Method.READ;
   }
 
   @Override
-  public String title() {
-    return "Playground";
+  protected Language language() {
+    return Language.ENGLISH;
   }
 
   @Override
-  public String description() {
-    return "Compass testing grounds";
+  protected Color theme() {
+    return new Color("#000000");
   }
 
   @Override
-  public Document icon() {
-    return new Document("/static/images/logo.png", MimeType.PNG);
+  protected Image icon() {
+    return new Image();
   }
 
   @Override
-  public String themeColor() {
-    return "#000000";
+  protected Image image() {
+    return new Image();
   }
 
   @Override
-  public List<Font> fonts() {
-    return List.of(
-        new Font("Geist", "100", "/static/fonts/geist-100.woff2"),
-        new Font("Geist", "200", "/static/fonts/geist-200.woff2"),
-        new Font("Geist", "300", "/static/fonts/geist-300.woff2"),
-        new Font("Geist", "400", "/static/fonts/geist-400.woff2"),
-        new Font("Geist", "500", "/static/fonts/geist-500.woff2"),
-        new Font("Geist", "600", "/static/fonts/geist-600.woff2"),
-        new Font("Geist", "700", "/static/fonts/geist-700.woff2"),
-        new Font("Geist", "800", "/static/fonts/geist-800.woff2"),
-        new Font("Geist", "900", "/static/fonts/geist-900.woff2")
-    );
+  protected Manifest manifest() {
+    return new Manifest();
   }
 
   @Override
-  public List<Document> css() {
-    return List.of(
-        new Document("/static/styles/default.css", MimeType.CSS)
-    );
+  protected List<Font> fonts() {
+    return Collections.emptyList();
   }
 
   @Override
-  public List<Document> js() {
-    return new ArrayList<>();
-  }
-
-  @Override
-  public Manifest manifest() {
-    return new Manifest(
-        "Playground",
-        "plygrnd",
-        "Compass testing grounds",
-        "#ffffff",
-        "#000000",
-        Display.MINIMAL_UI,
-        List.of(
-            new Icon("/static/images/logo.png", "1000x1000", MimeType.PNG)
-        )
-    );
+  protected String url() {
+    // todo figure this out
+    return "";
   }
 }

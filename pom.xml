@@ -16,6 +16,7 @@
         <module>http</module>
         <module>crypt</module>
         <module>sql</module>
+        <module>ui</module>
     </modules>
 
     <properties>
