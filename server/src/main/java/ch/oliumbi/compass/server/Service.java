@@ -1,6 +1,7 @@
 package ch.oliumbi.compass.server;
 
 import ch.oliumbi.compass.core.Compass;
+import ch.oliumbi.compass.core.enums.Status;
 import ch.oliumbi.compass.server.request.Request;
 import ch.oliumbi.compass.server.response.Response;
 import ch.oliumbi.compass.server.route.Route;
@@ -29,7 +30,8 @@ public class Service {
     }
 
     // todo 404
+    response.setStatus(Status.ERROR_USER);
 
-    return null;
+    return response;
   }
 }

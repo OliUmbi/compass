@@ -7,13 +7,19 @@ import ch.oliumbi.compass.server.ui.style.Style;
 
 public class Button extends Component {
 
+  private String value;
+
+  public Button(String value) {
+    this.value = value;
+  }
+
   @Override
   public String tag() {
     return "button";
   }
 
   public String value() {
-    return "hello";
+    return STR."hello \{value}";
   }
 
   @Override

@@ -19,6 +19,10 @@ public class Param {
   public static List<Param> create(String string) {
     List<Param> params = new ArrayList<>();
 
+    if (string == null) {
+      return params;
+    }
+
     String[] stringParams = string.split("&");
     for (String stringParam : stringParams) {
       String[] pair = stringParam.split("=");

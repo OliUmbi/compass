@@ -6,30 +6,34 @@ import ch.oliumbi.compass.server.ui.style.State;
 
 public abstract class Component {
 
-  public abstract String tag();
-  public abstract String value();
+  public String render() {
+    return STR."<\{tag()}>\{value()}</\{tag()}>";
+  }
 
-  public Script script() {
+  protected abstract String tag();
+  protected abstract String value();
+
+  protected Script script() {
     return null;
   }
 
-  public State xl() {
+  protected State xl() {
     return null;
   }
 
-  public State l() {
+  protected State l() {
     return null;
   }
 
-  public State m() {
+  protected State m() {
     return null;
   }
 
-  public State s() {
+  protected State s() {
     return null;
   }
 
-  public State xs() {
+  protected State xs() {
     return null;
   }
 }

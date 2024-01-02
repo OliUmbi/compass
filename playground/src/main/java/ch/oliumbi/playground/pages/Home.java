@@ -15,9 +15,9 @@ public class Home extends Page {
   }
 
   @Override
-  public Component render(Request request) {
-    request.getPath().element("id");
+  public Component load(Request request) {
+    String value = request.getPath().element("id");
 
-    return new Button();
+    return new Button(value);
   }
 }

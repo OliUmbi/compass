@@ -84,10 +84,15 @@ public class Path {
     int urlPointer = 0;
 
     while (patternPointer < patterns.length && urlPointer < urls.length) {
+      String pattern = patterns[patternPointer];
+      String url = urls[urlPointer];
 
       if (pattern.equals(":" + name)) {
         return url;
       }
+
+      patternPointer++;
+      urlPointer++;
     }
 
     return null;
