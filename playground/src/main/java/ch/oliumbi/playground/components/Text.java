@@ -1,6 +1,8 @@
 package ch.oliumbi.playground.components;
 
 import ch.oliumbi.compass.ui.component.Component;
+import ch.oliumbi.compass.ui.style.State;
+import ch.oliumbi.compass.ui.style.Style;
 
 public class Text extends Component {
 
@@ -20,5 +22,14 @@ public class Text extends Component {
   @Override
   protected String value() {
     return value;
+  }
+
+  @Override
+  protected State xl() {
+    return new State()
+        .fade(
+            new Style().opacity("0"),
+            new Style().opacity("1")
+        );
   }
 }

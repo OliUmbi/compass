@@ -43,8 +43,8 @@ public abstract class Playground extends Ui implements Route {
   }
 
   @Override
-  protected Color theme() {
-    return new Color("#000000");
+  protected String color() {
+    return "#000000";
   }
 
   @Override

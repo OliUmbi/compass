@@ -18,7 +18,7 @@ public abstract class Ui {
 
   protected abstract Language language();
 
-  protected abstract Color theme();
+  protected abstract String color();
 
   protected abstract Image icon();
 
@@ -60,7 +60,7 @@ public abstract class Ui {
 
             <title>\{title()}</title>
             <meta name="description" content="\{description()}">
-            <meta name="theme-color" content="\{theme().hex()}">
+            <meta name="theme-color" content="\{color()}">
             <link rel="icon" href="\{icon().getUrl()}" type="\{icon().getType()}">
             <link rel="manifest" href="\{manifest().url()}" />
 

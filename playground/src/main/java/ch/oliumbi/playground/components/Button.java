@@ -54,4 +54,11 @@ public class Button extends Component {
         .error(new Style()
             .background("red"));
   }
+
+  @Override
+  protected State m() {
+    return new State()
+        .normal(new Style()
+            .background("yellow"));
+  }
 }
