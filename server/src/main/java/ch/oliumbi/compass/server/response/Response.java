@@ -16,5 +16,13 @@ public class Response {
 
   private Status status;
   private List<Cookie> cookies;
-  private String body;
+  private byte[] body;
+
+  public void setBody(byte[] body) {
+    this.body = body;
+  }
+
+  public void setBody(String body) {
+    this.body = body.getBytes();
+  }
 }

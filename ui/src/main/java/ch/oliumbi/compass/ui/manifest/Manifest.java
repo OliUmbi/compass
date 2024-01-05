@@ -29,8 +29,4 @@ public class Manifest {
   private ShareTarget share_target;
   private String scope;
   private Orientation orientation;
-
-  public String url() {
-    return "sadfl"; // todo this needs to move and be replaced by file route
-  }
 }

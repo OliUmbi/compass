@@ -26,7 +26,7 @@ public abstract class Ui {
 
   protected abstract String url();
 
-  protected abstract Manifest manifest();
+  protected abstract String manifest();
 
   protected abstract List<Font> fonts();
 
@@ -62,19 +62,19 @@ public abstract class Ui {
             <meta name="description" content="\{description()}">
             <meta name="theme-color" content="\{color()}">
             <link rel="icon" href="\{icon().getUrl()}" type="\{icon().getType()}">
-            <link rel="manifest" href="\{manifest().url()}" />
+            <link rel="manifest" href="\{manifest()}" />
 
             <meta property="og:type" content="website" />
             <meta property="og:url" content="\{url()}" />
             <meta property="og:title" content="\{title()}" />
             <meta property="og:description" content="\{description()}" />
-            <meta property="og:image" content="\{image()}" />
+            <meta property="og:image" content="\{image().getUrl()}" />
 
             <meta property="twitter:card" content="summary_large_image" />
             <meta property="twitter:url" content="\{url()}" />
             <meta property="twitter:title" content="\{title()}" />
             <meta property="twitter:description" content="\{description()}" />
-            <meta property="twitter:image" content="\{image()}" />
+            <meta property="twitter:image" content="\{image().getUrl()}" />
 
             <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -227,6 +227,10 @@ public abstract class Ui {
         
         summary {
           display: list-item;
+        }
+        
+        h1, h2, h3, h4, h5, h6, p, small, blockquote {
+          margin: 0;
         }
         
         img {

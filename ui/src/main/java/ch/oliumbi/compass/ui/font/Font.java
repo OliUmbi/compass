@@ -14,14 +14,14 @@ public class Font {
 
   private String name;
   private String url;
-  private MimeType type;
+  private String type;
 
   public String render() {
     return STR."""
           @font-face {
             font-family: "\{name}";
             font-display: swap;
-            src: url(\{url}) format("\{type.translate()}");
+            src: url(\{url}) format("\{type}");
           }
           """;
   }

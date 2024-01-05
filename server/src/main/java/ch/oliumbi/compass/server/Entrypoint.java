@@ -19,7 +19,7 @@ public class Entrypoint extends Handler.Abstract {
   private final Service service = new Service();
 
   @Override
-  public boolean handle(Request jettyRequest, Response jettyResponse, Callback callback) throws Exception {
+  public boolean handle(Request jettyRequest, Response jettyResponse, Callback callback) {
     String url = jettyRequest.getHttpURI().getDecodedPath();
     String params = jettyRequest.getHttpURI().getQuery();
     String method = jettyRequest.getMethod();

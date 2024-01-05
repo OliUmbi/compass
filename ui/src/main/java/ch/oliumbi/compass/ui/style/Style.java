@@ -67,6 +67,26 @@ public class Style {
     return this;
   }
 
+  public Style fontFamily(String value) {
+    properties.add(new Property("font-family", STR."\"\{value}\""));
+    return this;
+  }
+
+  public Style fontWeight(String value) {
+    properties.add(new Property("font-weight", value));
+    return this;
+  }
+
+  public Style fontSize(String value) {
+    properties.add(new Property("font-size", value));
+    return this;
+  }
+
+  public Style fontHeight(String value) {
+    properties.add(new Property("line-height", value));
+    return this;
+  }
+
   public String render() {
     StringBuilder style = new StringBuilder();
 

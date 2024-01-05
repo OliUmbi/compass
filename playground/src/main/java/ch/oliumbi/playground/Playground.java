@@ -3,6 +3,7 @@ package ch.oliumbi.playground;
 import ch.oliumbi.compass.core.annotations.Autoload;
 import ch.oliumbi.compass.core.enums.Language;
 import ch.oliumbi.compass.core.enums.Method;
+import ch.oliumbi.compass.core.enums.MimeType;
 import ch.oliumbi.compass.core.enums.Status;
 import ch.oliumbi.compass.server.request.Request;
 import ch.oliumbi.compass.server.response.Response;
@@ -49,22 +50,24 @@ public abstract class Playground extends Ui implements Route {
 
   @Override
   protected Image icon() {
-    return new Image();
+    return new Image("/icon.png", MimeType.PNG, "Playground icon");
   }
 
   @Override
   protected Image image() {
-    return new Image();
+    return new Image("/icon.png", MimeType.PNG, "Playground icon");
   }
 
   @Override
-  protected Manifest manifest() {
-    return new Manifest();
+  protected String manifest() {
+    return "/manifest.json";
   }
 
   @Override
   protected List<Font> fonts() {
-    return Collections.emptyList();
+    return List.of(
+        new Font("geist", "/geist.woff2", "woff2")
+    );
   }
 
   @Override

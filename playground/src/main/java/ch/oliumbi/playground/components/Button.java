@@ -4,6 +4,7 @@ import ch.oliumbi.compass.ui.component.Component;
 import ch.oliumbi.compass.ui.script.Script;
 import ch.oliumbi.compass.ui.style.State;
 import ch.oliumbi.compass.ui.style.Style;
+import ch.oliumbi.playground.components.typography.P;
 import java.util.List;
 
 public class Button extends Component {
@@ -22,7 +23,7 @@ public class Button extends Component {
   @Override
   protected List<Component> components() {
     return List.of(
-        new Text("p", STR."hello \{value}")
+        new P(value)
     );
   }
 
@@ -60,5 +61,12 @@ public class Button extends Component {
     return new State()
         .normal(new Style()
             .background("yellow"));
+  }
+
+  @Override
+  protected State s() {
+    return new State()
+        .normal(new Style()
+            .padding("0.5rem 1rem"));
   }
 }

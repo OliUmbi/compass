@@ -15,7 +15,7 @@ public class PoolConnection implements AutoCloseable {
   }
 
   @Override
-  public void close() throws Exception {
+  public void close() {
     pool.surrender(this);
   }
 
