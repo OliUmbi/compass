@@ -1,11 +1,11 @@
 package ch.oliumbi.compass.ui.component;
 
-
 import ch.oliumbi.compass.ui.script.Script;
 import ch.oliumbi.compass.ui.style.State;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import org.apache.commons.text.StringEscapeUtils;
 
 public abstract class Component {
 
@@ -58,7 +58,7 @@ public abstract class Component {
 
     List<Component> components = components();
     String tag = tag();
-    StringBuilder value = new StringBuilder(value());
+    StringBuilder value = new StringBuilder(StringEscapeUtils.escapeHtml4(value()));
     StringBuilder script = new StringBuilder(script().render(id));
     StringBuilder xl = new StringBuilder(xl().render(id));
     StringBuilder l = new StringBuilder(l().render(id));

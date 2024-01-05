@@ -89,6 +89,13 @@
                 <artifactId>bcpkix-jdk18on</artifactId>
                 <version>1.77</version>
             </dependency>
+
+            <!-- commons text -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>1.11.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
