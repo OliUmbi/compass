@@ -9,12 +9,10 @@ import ch.oliumbi.compass.server.request.Request;
 import ch.oliumbi.compass.server.response.Response;
 import ch.oliumbi.compass.server.route.Route;
 import ch.oliumbi.compass.ui.Ui;
-import ch.oliumbi.compass.ui.color.Color;
 import ch.oliumbi.compass.ui.component.Component;
 import ch.oliumbi.compass.ui.font.Font;
-import ch.oliumbi.compass.ui.image.Image;
-import ch.oliumbi.compass.ui.manifest.Manifest;
-import java.util.Collections;
+import ch.oliumbi.playground.components.header.Header;
+import java.util.ArrayList;
 import java.util.List;
 
 @Autoload
@@ -24,11 +22,15 @@ public abstract class Playground extends Ui implements Route {
 
   @Override
   public Response handle(Request request, Response response) {
+    List<Component> components = new ArrayList<>();
+    components.add(new Header());
+    components.addAll(load(request));
 
-    List<Component> components = load(request);
+    String render = render(components);
 
     response.setStatus(Status.OK);
-    response.setBody(render(components));
+    response.setType(MimeType.HTML);
+    response.setBody(render.getBytes());
 
     return response;
   }
@@ -44,18 +46,33 @@ public abstract class Playground extends Ui implements Route {
   }
 
   @Override
-  protected String color() {
-    return "#000000";
+  protected String theme() {
+    return Theme.primary();
   }
 
   @Override
-  protected Image icon() {
-    return new Image("/icon.png", MimeType.PNG, "Playground icon");
+  protected String foreground() {
+    return Theme.blackDark();
   }
 
   @Override
-  protected Image image() {
-    return new Image("/icon.png", MimeType.PNG, "Playground icon");
+  protected String background() {
+    return Theme.whiteLight();
+  }
+
+  @Override
+  protected String icon() {
+    return "/static/png/icon.png";
+  }
+
+  @Override
+  protected String iconType() {
+    return "image/png";
+  }
+
+  @Override
+  protected String image() {
+    return "/static/png/icon.png";
   }
 
   @Override
@@ -66,13 +83,13 @@ public abstract class Playground extends Ui implements Route {
   @Override
   protected List<Font> fonts() {
     return List.of(
-        new Font("geist", "/geist.woff2", "woff2")
+        new Font("geist", "/static/woff/geist.woff2", "woff2")
     );
   }
 
   @Override
   protected String url() {
     // todo figure this out
-    return "";
+    return "https://uncle-t.ch";
   }
 }

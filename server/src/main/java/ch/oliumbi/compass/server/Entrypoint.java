@@ -7,6 +7,7 @@ import ch.oliumbi.compass.server.param.Param;
 import ch.oliumbi.compass.server.path.Path;
 import java.util.List;
 import org.eclipse.jetty.http.HttpCookie;
+import org.eclipse.jetty.http.HttpField;
 import org.eclipse.jetty.http.HttpFields;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
@@ -38,6 +39,10 @@ public class Entrypoint extends Handler.Abstract {
     ch.oliumbi.compass.server.response.Response compassResponse = service.handle(compassRequest);
 
     jettyResponse.setStatus(compassResponse.getStatus().translate());
+    jettyResponse.getHeaders().add(new HttpField("Content-Type", compassResponse.getType().translate()));
+    for (Header header : compassResponse.getHeaders()) {
+      jettyResponse.getHeaders().add(header.convert());
+    }
     for (Cookie cookie : compassResponse.getCookies()) {
       Response.addCookie(jettyResponse, cookie.build());
     }

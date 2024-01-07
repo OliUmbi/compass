@@ -27,4 +27,8 @@ public class Header {
 
     return headers;
   }
+
+  public HttpField convert() {
+    return new HttpField(name, value);
+  }
 }

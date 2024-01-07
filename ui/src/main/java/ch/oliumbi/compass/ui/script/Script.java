@@ -31,14 +31,14 @@ public class Script {
 
     StringBuilder script = new StringBuilder(STR."""
         {
-          let component = document.getElementById("\{id}")
+          let component = document.getElementById("\{id}");
         """);
 
     for (Event componentEvent : componentEvents) {
       script.append(STR."""
           component.addEventListener("\{componentEvent.getName()}", () => {
             \{componentEvent.getCode()}
-          })
+          });
           """);
     }
 
@@ -49,7 +49,7 @@ public class Script {
             callback: () => {
               \{customEvent.getCode()}
             }
-          })
+          });
           """);
     }
 
@@ -58,21 +58,5 @@ public class Script {
         """);
 
     return script.toString();
-  }
-
-  public static void main(String[] args) {
-    Script script = new Script()
-        .event("meun", """
-                if (component.style.right === "") {
-                  component.style.right = "0%"
-                } else {
-                  component.style.right = ""
-                }
-        """)
-        .click("""
-            event("sdaf")
-            """);
-
-    System.out.println(script.render("test-icon"));
   }
 }

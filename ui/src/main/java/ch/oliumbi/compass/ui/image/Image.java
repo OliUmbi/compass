@@ -12,7 +12,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Image {
 
-  private String url;
+  private String path;
   private MimeType type;
   private String description;
+  private Integer width;
+  private Integer height;
 }

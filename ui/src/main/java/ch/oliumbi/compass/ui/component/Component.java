@@ -1,10 +1,13 @@
 package ch.oliumbi.compass.ui.component;
 
+import ch.oliumbi.compass.ui.attribute.Attribute;
 import ch.oliumbi.compass.ui.script.Script;
 import ch.oliumbi.compass.ui.style.State;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 import org.apache.commons.text.StringEscapeUtils;
 
 public abstract class Component {
@@ -19,6 +22,10 @@ public abstract class Component {
 
   protected String value() {
     return "";
+  }
+
+  protected List<Attribute> attributes() {
+    return Collections.emptyList();
   }
 
   protected boolean error() {
@@ -59,6 +66,7 @@ public abstract class Component {
     List<Component> components = components();
     String tag = tag();
     StringBuilder value = new StringBuilder(StringEscapeUtils.escapeHtml4(value()));
+    String attributes = attributes().stream().map(Attribute::render).collect(Collectors.joining(" "));
     StringBuilder script = new StringBuilder(script().render(id));
     StringBuilder xl = new StringBuilder(xl().render(id));
     StringBuilder l = new StringBuilder(l().render(id));
@@ -79,7 +87,7 @@ public abstract class Component {
     }
 
     render.setValue(STR."""
-    <\{tag} id="\{id}" data-error="\{error()}" \{disabled() ? "disabled" : ""}>\{value.toString()}</\{tag}>
+    <\{tag} id="\{id}" data-error="\{error()}" \{disabled() ? "disabled" : ""} \{attributes}>\{value.toString()}</\{tag}>
     """);
     render.setScript(script.toString());
     render.setXl(xl.toString());

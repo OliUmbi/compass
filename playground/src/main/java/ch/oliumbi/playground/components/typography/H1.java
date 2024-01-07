@@ -3,6 +3,7 @@ package ch.oliumbi.playground.components.typography;
 import ch.oliumbi.compass.ui.component.Component;
 import ch.oliumbi.compass.ui.style.State;
 import ch.oliumbi.compass.ui.style.Style;
+import ch.oliumbi.playground.Theme;
 
 public class H1 extends Component {
 

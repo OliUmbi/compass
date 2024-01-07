@@ -13,7 +13,7 @@ public class Style {
   }
 
   public Style top(String value) {
-    properties.add(new Property("top(", value));
+    properties.add(new Property("top", value));
     return this;
   }
 
@@ -32,6 +32,16 @@ public class Style {
     return this;
   }
 
+  public Style width(String value) {
+    properties.add(new Property("width", value));
+    return this;
+  }
+
+  public Style height(String value) {
+    properties.add(new Property("height", value));
+    return this;
+  }
+
   public Style margin(String value) {
     properties.add(new Property("margin", value));
     return this;
@@ -39,6 +49,15 @@ public class Style {
 
   public Style padding(String value) {
     properties.add(new Property("padding", value));
+    return this;
+  }
+
+  public Style flex(String direction, String wrap, String justify, String align) {
+    properties.add(new Property("display", "flex"));
+    properties.add(new Property("flex-direction", direction));
+    properties.add(new Property("flex-wrap", wrap));
+    properties.add(new Property("justify-content", justify));
+    properties.add(new Property("align-items", align));
     return this;
   }
 
@@ -67,6 +86,11 @@ public class Style {
     return this;
   }
 
+  public Style fontColor(String value) {
+    properties.add(new Property("color", value));
+    return this;
+  }
+
   public Style fontFamily(String value) {
     properties.add(new Property("font-family", STR."\"\{value}\""));
     return this;
@@ -84,6 +108,11 @@ public class Style {
 
   public Style fontHeight(String value) {
     properties.add(new Property("line-height", value));
+    return this;
+  }
+
+  public Style fontDecoration(String value) {
+    properties.add(new Property("text-decoration", value));
     return this;
   }
 

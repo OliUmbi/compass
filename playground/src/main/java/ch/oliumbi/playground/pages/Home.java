@@ -4,7 +4,7 @@ import ch.oliumbi.compass.core.annotations.Autoload;
 import ch.oliumbi.compass.server.request.Request;
 import ch.oliumbi.compass.ui.component.Component;
 import ch.oliumbi.playground.Playground;
-import ch.oliumbi.playground.components.Button;
+import ch.oliumbi.playground.components.base.Button;
 import ch.oliumbi.playground.components.typography.H1;
 import ch.oliumbi.playground.components.typography.H2;
 import ch.oliumbi.playground.components.typography.H3;

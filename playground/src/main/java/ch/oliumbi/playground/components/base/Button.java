@@ -1,4 +1,4 @@
-package ch.oliumbi.playground.components;
+package ch.oliumbi.playground.components.base;
 
 import ch.oliumbi.compass.ui.component.Component;
 import ch.oliumbi.compass.ui.script.Script;
@@ -28,14 +28,6 @@ public class Button extends Component {
   }
 
   @Override
-  public Script script() {
-    return new Script()
-        .click("""
-            event(menu)
-            """);
-  }
-
-  @Override
   public State xl() {
     return new State()
         .normal(new Style()
@@ -54,19 +46,5 @@ public class Button extends Component {
             .opacity("0.5"))
         .error(new Style()
             .background("red"));
-  }
-
-  @Override
-  protected State m() {
-    return new State()
-        .normal(new Style()
-            .background("yellow"));
-  }
-
-  @Override
-  protected State s() {
-    return new State()
-        .normal(new Style()
-            .padding("0.5rem 1rem"));
   }
 }

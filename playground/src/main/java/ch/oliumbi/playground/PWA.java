@@ -1,4 +1,4 @@
-package ch.oliumbi.playground.files;
+package ch.oliumbi.playground;
 
 import ch.oliumbi.compass.core.annotations.Autoload;
 import ch.oliumbi.compass.core.enums.Method;
@@ -58,7 +58,8 @@ public class PWA implements Route {
         .ifPresentOrElse(
             json -> {
               response.setStatus(Status.OK);
-              response.setBody(json);
+              response.setType(MimeType.JSON);
+              response.setBody(json.getBytes());
             },
             () -> {
               response.setStatus(Status.ERROR_SERVER);

@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public enum MimeType implements Translatable<String> {
+  PLAIN,
   HTML,
   CSS,
   JAVASCRIPT,
@@ -24,6 +25,9 @@ public enum MimeType implements Translatable<String> {
   @Override
   public String translate() {
     switch (this) {
+      case PLAIN -> {
+        return "text/plain";
+      }
       case HTML -> {
         return "text/html";
       }
@@ -69,6 +73,53 @@ public enum MimeType implements Translatable<String> {
       default -> {
         LOGGER.error("Unexpected value: " + this);
         return "text/plain";
+      }
+    }
+  }
+
+  public String extension() {
+    switch (this) {
+      case HTML -> {
+        return ".html";
+      }
+      case CSS -> {
+        return ".css";
+      }
+      case JAVASCRIPT -> {
+        return ".js";
+      }
+      case JSON -> {
+        return ".json";
+      }
+      case XML -> {
+        return ".xml";
+      }
+      case PDF -> {
+        return ".pdf";
+      }
+      case PNG -> {
+        return ".png";
+      }
+      case JPEG -> {
+        return ".jpg";
+      }
+      case SVG -> {
+        return ".svg";
+      }
+      case ICON -> {
+        return ".ico";
+      }
+      case WOFF2 -> {
+        return ".woff2";
+      }
+      case TTF -> {
+        return ".ttf";
+      }
+      case OTF -> {
+        return ".otf";
+      }
+      default -> {
+        return "";
       }
     }
   }
