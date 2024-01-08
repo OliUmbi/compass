@@ -10,6 +10,7 @@ public class Navigation extends Component {
     return "nav";
   }
 
+  // todo breadcrumbs
   @Override
   protected List<Component> components() {
     return List.of(
