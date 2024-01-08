@@ -1,8 +1,8 @@
-package ch.oliumbi.playground.components.base;
+package ch.oliumbi.playground;
 
 import ch.oliumbi.playground.components.image.Img;
 
-public class Icon {
+public class Icons {
 
   public static Img menu() {
     return new Img("/static/svg/menu.svg", "menu", 32, 32);

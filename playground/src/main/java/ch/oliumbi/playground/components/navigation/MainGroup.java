@@ -16,10 +16,10 @@ public class MainGroup extends Component {
   protected List<Component> components() {
     return List.of(
         new MainLink("Home", "/"),
-        new MainLink("Privatkoch", "/"),
-        new MainLink("Catering", "/"),
-        new MainLink("Kurse", "/"),
-        new MainLink("Über uns ", "/")
+        new MainLink("Privatkoch", "/privatkoch"),
+        new MainLink("Catering", "/catering"),
+        new MainLink("Kurse", "/kurse"),
+        new MainLink("Über Mich", "/ueber-mich")
     );
   }
 

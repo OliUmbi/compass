@@ -27,7 +27,35 @@ public class Header extends Component {
   protected State xl() {
     return new State()
         .normal(new Style()
-            .padding("1rem")
+            .padding("5rem")
             .flex("row", "nowrap", "space-between", "center"));
+  }
+
+  @Override
+  protected State l() {
+    return new State()
+        .normal(new Style()
+            .padding("4rem"));
+  }
+
+  @Override
+  protected State m() {
+    return new State()
+        .normal(new Style()
+            .padding("3rem"));
+  }
+
+  @Override
+  protected State s() {
+    return new State()
+        .normal(new Style()
+            .padding("2rem"));
+  }
+
+  @Override
+  protected State xs() {
+    return new State()
+        .normal(new Style()
+            .padding("1rem"));
   }
 }

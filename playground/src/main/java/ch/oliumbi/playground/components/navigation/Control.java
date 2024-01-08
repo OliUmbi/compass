@@ -5,7 +5,7 @@ import ch.oliumbi.compass.ui.script.Script;
 import ch.oliumbi.compass.ui.style.State;
 import ch.oliumbi.compass.ui.style.Style;
 import ch.oliumbi.playground.Theme;
-import ch.oliumbi.playground.components.base.Icon;
+import ch.oliumbi.playground.Icons;
 import java.util.List;
 
 public class Control extends Component {
@@ -25,9 +25,9 @@ public class Control extends Component {
   protected List<Component> components() {
 
     if (open) {
-      return List.of(Icon.menu());
+      return List.of(Icons.menu());
     } else {
-      return List.of(Icon.close());
+      return List.of(Icons.close());
     }
   }
 

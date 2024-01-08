@@ -44,7 +44,7 @@ public class SubLink extends Component {
     return new State()
         .normal(new Style()
             .width("100%")
-            .fontColor(Theme.blackLight())
+            .fontColor(Theme.black())
             .fontDecoration("none"))
         .hover(new Style()
             .fontColor(Theme.primary()));

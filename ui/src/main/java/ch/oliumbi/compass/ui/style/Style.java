@@ -37,8 +37,28 @@ public class Style {
     return this;
   }
 
+  public Style widthMin(String value) {
+    properties.add(new Property("min-width", value));
+    return this;
+  }
+
+  public Style widthMax(String value) {
+    properties.add(new Property("max-width", value));
+    return this;
+  }
+
   public Style height(String value) {
     properties.add(new Property("height", value));
+    return this;
+  }
+
+  public Style heightMin(String value) {
+    properties.add(new Property("min-height", value));
+    return this;
+  }
+
+  public Style heightMax(String value) {
+    properties.add(new Property("max-height", value));
     return this;
   }
 

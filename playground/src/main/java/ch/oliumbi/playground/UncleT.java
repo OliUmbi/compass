@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Autoload
-public abstract class Playground extends Ui implements Route {
+public abstract class UncleT extends Ui implements Route {
 
   protected abstract List<Component> load(Request request);
 

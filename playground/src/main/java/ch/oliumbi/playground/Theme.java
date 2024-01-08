@@ -53,4 +53,24 @@ public class Theme {
   public static String outline() {
     return STR."0.125rem solid \{black()}";
   }
+
+  public static String xl() {
+    return "100rem";
+  }
+
+  public static String l() {
+    return "80rem";
+  }
+
+  public static String m() {
+    return "60rem";
+  }
+
+  public static String s() {
+    return "40rem";
+  }
+
+  public static String xs() {
+    return "20rem";
+  }
 }
