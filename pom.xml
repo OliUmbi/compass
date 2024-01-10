@@ -7,8 +7,15 @@
     <packaging>pom</packaging>
     <groupId>ch.oliumbi</groupId>
     <artifactId>compass</artifactId>
-    <version>development</version>
+    <version>1.0</version>
     <name>${project.artifactId}</name>
+
+    <properties>
+        <java.version>21</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <modules>
         <module>core</module>
@@ -18,13 +25,6 @@
         <module>sql</module>
         <module>ui</module>
     </modules>
-
-    <properties>
-        <java.version>21</java.version>
-        <maven.compiler.target>21</maven.compiler.target>
-        <maven.compiler.source>21</maven.compiler.source>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencies>
         <!-- logging -->
@@ -47,7 +47,7 @@
             <dependency>
                 <groupId>ch.oliumbi.compass</groupId>
                 <artifactId>core</artifactId>
-                <version>development</version>
+                <version>1.0</version>
             </dependency>
 
             <!-- lombok-->
@@ -107,8 +107,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.12.1</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                     <compilerArgs>--enable-preview</compilerArgs>
                 </configuration>
             </plugin>

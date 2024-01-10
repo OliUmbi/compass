@@ -8,7 +8,7 @@
   <description>testing</description>
   <groupId>ch.oliumbi.compass</groupId>
   <artifactId>playground</artifactId>
-  <version>development</version>
+  <version>1.0</version>
 
   <properties>
     <java.version>21</java.version>
@@ -21,17 +21,17 @@
     <dependency>
       <groupId>ch.oliumbi.compass</groupId>
       <artifactId>core</artifactId>
-      <version>development</version>
+      <version>1.0</version>
     </dependency>
     <dependency>
       <groupId>ch.oliumbi.compass</groupId>
       <artifactId>server</artifactId>
-      <version>development</version>
+      <version>1.0</version>
     </dependency>
     <dependency>
       <groupId>ch.oliumbi.compass</groupId>
       <artifactId>ui</artifactId>
-      <version>development</version>
+      <version>1.0</version>
     </dependency>
   </dependencies>
 

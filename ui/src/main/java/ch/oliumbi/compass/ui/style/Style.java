@@ -7,6 +7,11 @@ public class Style {
 
   private List<Property> properties = new ArrayList<>();
 
+  public Style display(String value) {
+    properties.add(new Property("display", value));
+    return this;
+  }
+
   public Style position(String value) {
     properties.add(new Property("position", value));
     return this;
@@ -72,12 +77,23 @@ public class Style {
     return this;
   }
 
-  public Style flex(String direction, String wrap, String justify, String align) {
+  public Style flex(String direction, String wrap, String justify, String align, String gap) {
     properties.add(new Property("display", "flex"));
     properties.add(new Property("flex-direction", direction));
     properties.add(new Property("flex-wrap", wrap));
     properties.add(new Property("justify-content", justify));
     properties.add(new Property("align-items", align));
+    properties.add(new Property("gap", gap));
+    return this;
+  }
+
+  public Style grid(String columns, String rows, String justify, String align, String gap) {
+    properties.add(new Property("display", "grid"));
+    properties.add(new Property("grid-template-columns", columns));
+    properties.add(new Property("grid-template-rows", rows));
+    properties.add(new Property("justify-items", justify));
+    properties.add(new Property("align-items", align));
+    properties.add(new Property("gap", gap));
     return this;
   }
 
@@ -108,6 +124,11 @@ public class Style {
 
   public Style fontColor(String value) {
     properties.add(new Property("color", value));
+    return this;
+  }
+
+  public Style fontAlign(String value) {
+    properties.add(new Property("text-align", value));
     return this;
   }
 
