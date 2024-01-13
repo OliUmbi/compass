@@ -10,6 +10,6 @@ public class Radius implements Style {
 
   @Override
   public String render() {
-    return STR."radius: \{value};";
+    return STR."border-radius: \{value};";
   }
 }
