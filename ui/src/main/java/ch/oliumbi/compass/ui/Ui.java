@@ -250,6 +250,11 @@ public abstract class Ui {
           padding-inline: 0;
         }
 
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+
         body {
           background-color: \{background()};
           color: \{foreground()};

@@ -1,10 +1,7 @@
 package ch.oliumbi.playground.components.header;
 
-import ch.oliumbi.compass.ui.component.Component;
 import ch.oliumbi.compass.ui.style.State;
-import ch.oliumbi.compass.ui.style.Style;
 import ch.oliumbi.playground.components.image.Img;
-import java.util.List;
 
 public class Logo extends Img {
 

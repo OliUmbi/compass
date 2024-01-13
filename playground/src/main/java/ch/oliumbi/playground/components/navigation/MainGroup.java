@@ -2,7 +2,6 @@ package ch.oliumbi.playground.components.navigation;
 
 import ch.oliumbi.compass.ui.component.Component;
 import ch.oliumbi.compass.ui.style.State;
-import ch.oliumbi.compass.ui.style.Style;
 import java.util.List;
 
 public class MainGroup extends Component {

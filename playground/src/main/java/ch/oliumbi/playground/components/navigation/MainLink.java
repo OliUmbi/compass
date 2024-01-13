@@ -3,7 +3,6 @@ package ch.oliumbi.playground.components.navigation;
 import ch.oliumbi.compass.ui.attribute.Attribute;
 import ch.oliumbi.compass.ui.component.Component;
 import ch.oliumbi.compass.ui.style.State;
-import ch.oliumbi.compass.ui.style.Style;
 import ch.oliumbi.playground.Theme;
 import ch.oliumbi.playground.components.typography.H1;
 import java.util.List;

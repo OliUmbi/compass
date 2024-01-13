@@ -1,9 +1,7 @@
 package ch.oliumbi.playground.components.base;
 
 import ch.oliumbi.compass.ui.component.Component;
-import ch.oliumbi.compass.ui.script.Script;
 import ch.oliumbi.compass.ui.style.State;
-import ch.oliumbi.compass.ui.style.Style;
 import ch.oliumbi.playground.components.typography.P;
 import java.util.List;
 
