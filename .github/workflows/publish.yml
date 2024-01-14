@@ -25,7 +25,7 @@ jobs:
           server-id: github
 
       - name: version update
-        run: mvn versions:set -DnewVersion=${{ github.ref_name }}
+        run: mvn --batch-mode versions:set -DnewVersion=${{ github.ref_name }}
 
       - name: publish
         run: mvn --batch-mode deploy source:jar
