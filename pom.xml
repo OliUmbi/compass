@@ -26,6 +26,14 @@
         <module>ui</module>
     </modules>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Competec Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/OliUmbi/compass</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <!-- logging -->
         <dependency>
