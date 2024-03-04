@@ -7,12 +7,37 @@
   <parent>
     <groupId>ch.oliumbi</groupId>
     <artifactId>compass</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
   </parent>
 
   <groupId>ch.oliumbi.compass</groupId>
   <artifactId>sql</artifactId>
+
   <name>${project.artifactId}</name>
+  <description>The same, only different</description>
+  <url>https://github.com/OliUmbi/compass</url>
+
+  <licenses>
+    <license>
+      <name>GNU GENERAL PUBLIC LICENSE, Version 3</name>
+      <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <name>OliUmbi</name>
+      <email>info@oliumbi.ch</email>
+      <organization>OliUmbi</organization>
+      <organizationUrl>https://www.oliumbi.ch</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/OliUmbi/compass.git</connection>
+    <developerConnection>scm:git:ssh://github.com:OliUmbi/compass.git</developerConnection>
+    <url>https://github.com/OliUmbi/compass/tree/main</url>
+  </scm>
 
   <dependencies>
     <!-- core -->

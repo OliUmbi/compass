@@ -54,7 +54,7 @@ public abstract class AbstractSql implements Sql {
 
       Query query = queryService.parse(sql);
 
-      if (query.outputs().size() == 0) {
+      if (query.outputs().isEmpty()) {
         LOGGER.error("No into clause defined, maybe you want to use update() instead");
         return Optional.empty();
       }
@@ -78,7 +78,7 @@ public abstract class AbstractSql implements Sql {
 
       Query query = queryService.parse(sql);
 
-      if (query.outputs().size() == 0) {
+      if (query.outputs().isEmpty()) {
         LOGGER.error("No into clause defined, maybe you want to use update() instead");
         return Optional.empty();
       }
@@ -96,12 +96,12 @@ public abstract class AbstractSql implements Sql {
         return Optional.empty();
       }
 
-      if (result.size() == 0) {
+      if (result.isEmpty()) {
         LOGGER.warn("Query returned no results, either query is invalid or query() should be used");
         return Optional.empty();
       }
 
-      return Optional.of(result.get(0));
+      return Optional.of(result.getFirst());
     } catch (Exception e) {
       LOGGER.error("Exception occurred while executing sql query", e);
       return Optional.empty();
@@ -115,7 +115,7 @@ public abstract class AbstractSql implements Sql {
 
       Query query = queryService.parse(sql);
 
-      if (query.outputs().size() > 0) {
+      if (!query.outputs().isEmpty()) {
         LOGGER.error("Into clause defined, maybe you want to use update() instead");
         return Optional.empty();
       }
@@ -138,7 +138,7 @@ public abstract class AbstractSql implements Sql {
 
       Query query = queryService.parse(sql);
 
-      if (query.outputs().size() > 0) {
+      if (!query.outputs().isEmpty()) {
         LOGGER.error("Into clause defined, maybe you want to use update() instead");
         return Optional.empty();
       }
