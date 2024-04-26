@@ -18,14 +18,10 @@ public abstract class AbstractSql implements Sql {
 
   public static final Logger LOGGER = LoggerFactory.getLogger(AbstractSql.class);
 
-  private final Pool pool;
   private final QueryService queryService = new QueryService();
   private final InputService inputService = new InputService();
   private final OutputService outputService = new OutputService();
-
-  public AbstractSql() {
-    pool = new Pool(jdbc(), username(), password(), poolSize(), poolInitial());
-  }
+  private Pool pool;
 
   @Override
   public int poolSize() {
@@ -39,18 +35,26 @@ public abstract class AbstractSql implements Sql {
 
   @Override
   public PoolConnection connection() throws CompassSqlException {
+    if (pool == null) {
+      pool = new Pool(jdbc(), username(), password(), poolSize(), poolInitial());;
+    }
+
     return pool.lease();
   }
 
   @Override
   public boolean connected() {
+    if (pool == null) {
+      pool = new Pool(jdbc(), username(), password(), poolSize(), poolInitial());;
+    }
+
     return pool.connected();
   }
 
   @Override
   public <T> Optional<List<T>> query(String sql, Class<T> output, Object... inputs) {
 
-    try (PoolConnection connection = pool.lease()) {
+    try (PoolConnection connection = connection()) {
 
       Query query = queryService.parse(sql);
 
@@ -74,7 +78,7 @@ public abstract class AbstractSql implements Sql {
 
   @Override
   public <T> Optional<T> querySingle(String sql, Class<T> output, Object... inputs) {
-    try (PoolConnection connection = pool.lease()) {
+    try (PoolConnection connection = connection()) {
 
       Query query = queryService.parse(sql);
 
@@ -111,7 +115,7 @@ public abstract class AbstractSql implements Sql {
   @Override
   public Optional<Integer> update(String sql, Object... inputs) {
 
-    try (PoolConnection connection = pool.lease()) {
+    try (PoolConnection connection = connection()) {
 
       Query query = queryService.parse(sql);
 
@@ -134,7 +138,7 @@ public abstract class AbstractSql implements Sql {
   @Override
   public Optional<Boolean> exists(String sql, Object... inputs) {
 
-    try (PoolConnection connection = pool.lease()) {
+    try (PoolConnection connection = connection()) {
 
       Query query = queryService.parse(sql);
 
