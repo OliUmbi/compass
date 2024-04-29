@@ -64,6 +64,10 @@ public class InputService {
   }
 
   private Object convert(Object value) {
+    if (value instanceof Enum<?> anEnum) {
+      value = anEnum.name();
+    }
+
     return value;
   }
 }

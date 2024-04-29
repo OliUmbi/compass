@@ -31,7 +31,7 @@ public class OutputService {
           Field field = Reflection.field(clazzOutput, queryOutput);
           Object value = value(resultSet, field.getType(), (i + 1));
 
-          Reflection.fieldSet(output, queryOutput, value);
+          Reflection.fieldSet(output, queryOutput, convert(value, field.getType()));
         }
 
         outputs.add(output);
@@ -61,10 +61,27 @@ public class OutputService {
         return resultSet.getBytes(index);
       }
 
+      if (type.isEnum()) {
+        return resultSet.getString(index);
+      }
+
       return resultSet.getObject(index, type);
     } catch (SQLException e) {
       LOGGER.error("Failed to convert value", e);
       throw new CompassSqlException();
     }
+  }
+
+  private Object convert(Object value, Class<?> outputType) throws CompassSqlException, CompassReflectionException {
+    if (outputType.isEnum()) {
+      String enumString = (String) value;
+
+      return Reflection.invoke(
+              Reflection.method(outputType, "valueOf", String.class),
+              null,
+              enumString);
+    }
+
+    return value;
   }
 }
